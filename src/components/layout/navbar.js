@@ -1,7 +1,28 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { filterProduct } from "../redux/action/product";
 
 class Navbar extends Component {
+  state = {
+    category: "",
+    search: ""
+  };
+
+  sortProduct = event => {
+    this.setState({
+      category: event.target.value
+    });
+    this.props.dispatch(filterProduct(event.target.value, this.state.search));
+  };
+
+  searchProduct = event => {
+    this.setState({
+      search: event.target.value
+    });
+    this.props.dispatch(filterProduct(this.state.category, event.target.value));
+  };
+
   render() {
     return (
       <nav
@@ -9,41 +30,22 @@ class Navbar extends Component {
         style={{ background: "white" }}
       >
         <div className="container">
-          <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li className="nav-item">
-              <a
-                className="{this.state.all_class}"
-                id=""
-                name="all_class"
-                onClick="{this.onClickMenu}"
-                href="/"
-              >
-                All
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="{this.state.food_class}"
-                id="food"
-                name="food_class"
-                onClick="{this.onClickMenu}"
-                href="?category=food"
-              >
-                Food
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="{this.state.drink_class}"
-                id="drink"
-                name="drink_class"
-                onClick="{this.onClickMenu}"
-                href="?category=drink"
-              >
-                Drink
-              </a>
-            </li>
-          </ul>
+
+          <select
+            className="navbar-nav ml-auto mt-2 mt-lg-0"
+            id="inputGroupSelect01"
+            defaultValue={"DEFAULT"}
+            name="category"
+            onChange={this.sortProduct}
+            as="select"
+          >
+            <option value="" disabled>
+              Choose..
+            </option>
+            <option value="">ALL</option>
+            <option value="food">FOOD</option>
+            <option value="drink">DRINK</option>
+          </select>
 
           <div className="collapse navbar-collapse">
             <button
@@ -58,10 +60,6 @@ class Navbar extends Component {
             <a
               className="navbar-brand"
               style={{ marginRight: "30px" }}
-              id=""
-              name="all_class"
-              onClick={this.onClickMenu}
-              href="/"
             >
               Food Items
             </a>
@@ -71,7 +69,8 @@ class Navbar extends Component {
                 className="form-control mr-sm-40"
                 type="search"
                 placeholder="Search"
-                onChange="{this.onChangeSearch}"
+                aria-label="Search"
+                onChange={this.searchProduct}
               />
             </form>
             <div className="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -86,4 +85,11 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+// const searchStateToProps = state => {
+//   //console.log(state)
+//   return {
+//     products: state.products.products
+//   };
+// };
+
+export default connect()(Navbar);

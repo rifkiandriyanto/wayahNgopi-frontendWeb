@@ -12,7 +12,6 @@ class ProductAdd extends Component {
     category: 0,
     price: 0,
     stock: 0,
-    formStatus: "Add"
   };
 
   onChangeValue = e => {
@@ -47,7 +46,7 @@ class ProductAdd extends Component {
     return (
       <Modal show={this.props.show} onHide={this.props.onHandleClose}>
         <Modal.Header closeButton>
-          <Modal.Title> {this.state.formStatus} Item</Modal.Title>
+          <Modal.Title> Add Item</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={this.onSubmitHandler}>
