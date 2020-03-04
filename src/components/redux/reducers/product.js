@@ -1,17 +1,16 @@
 const initialState = {
   products: [],
-  // productId: null,
-  isLoading: false
+  pages: []
 };
 const product = (state = initialState, action) => {
   console.log(action.type);
   switch (action.type) {
-    case "GET_PRODUCT_PENDING":
+    case "GET_PRODUCTS_PENDING":
       return {
         ...state
       };
 
-    case "GET_PRODUCT_REJECTED":
+    case "GET_PRODUCTS_REJECTED":
       return {
         ...state
       };
@@ -20,7 +19,25 @@ const product = (state = initialState, action) => {
       // console.log(action.payload);
       return {
         ...state,
-        products: action.payload.data.result
+        products: action.payload.data.result,
+      };
+
+      //PRODUCT CASHER
+      case "GET_PRODUCTSCASHIER_PENDING":
+      return {
+        ...state
+      };
+
+    case "GET_PRODUCTSCASHIER_REJECTED":
+      return {
+        ...state
+      };
+
+    case "GET_PRODUCTSCASHIER_FULFILLED":
+      return {
+        ...state,
+        products: action.payload.data.result,
+        pages: action.payload.data.totalPages
       };
 
     case "DELETE_PRODUCT_PENDING":
@@ -40,7 +57,6 @@ const product = (state = initialState, action) => {
       );
       return {
         ...state,
-        isLoading: false,
         products: newDataAfterDelete
       };
 
@@ -60,7 +76,6 @@ const product = (state = initialState, action) => {
       const productAdd = [...state.products, action.payload.data.result];
       return {
         ...state,
-        isLoading: false,
         products: productAdd
       };
 
@@ -85,20 +100,6 @@ const product = (state = initialState, action) => {
       return {
         ...state,
         products: newProductAfterUpdate
-      };
-
-    case "FILTERSEARCH_PRODUCT_PENDING":
-      return {
-        ...state
-      };
-    case "FILTERSEARCH_PRODUCT_REJECTED":
-      return {
-        ...state
-      };
-    case "FILTERSEARCH_PRODUCT_FULFILLED":
-      return {
-        ...state,
-        products: action.payload.data.result
       };
 
     default:

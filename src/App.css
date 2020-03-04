@@ -6,10 +6,10 @@
 }
 
 
-.products .card img{
+/* .products .card img{
   border-radius: 10px 10px;
   box-shadow: -3px 3px 6px 3px rgba(247, 166, 166);
-}
+} */
 
 .add{
   position: fixed;
@@ -53,10 +53,10 @@
     padding-bottom: 3%;
   }
 
-  .products .card{
+  /* .products .card{
     border: none;
     background: transparent;
-  }
+  } */
 
   .navbar-nav{
     padding-right: 3%;

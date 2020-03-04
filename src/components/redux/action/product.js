@@ -1,22 +1,28 @@
 import axios from "axios";
-export const getProducts = (limit, activePage, activeCategory) => {
+export const getProducts = () => {
   return {
     type: "GET_PRODUCTS",
     payload: axios({
       method: "GET",
-      url: `http://localhost:8006/product/?limit=${limit}&page=${activePage}`
+      url: "http://localhost:8006/product"
     })
   };
 };
 
 
-export const filterProduct = (category, search) => {
+export const getProductsCashier = (data) => {
+  const limit = 6
+  const page = data.activePage || 1
+  const category = data.activeCategory || ''
+  const name= data.serachName || ''
+  const sortBy = data.sort || 'id'
+  const sort = data.by || 'ASC'
   return {
-    type: 'FILTERSEARCH_PRODUCT',
-    payload: axios({
-      method: "GET",
-      url: `http://localhost:8006/product/?category=${category}&name=${search}`,
-    })
+      type: 'GET_PRODUCTSCASHIER',
+      payload: axios({
+          method: "GET",
+          url: `http://localhost:8006/product/?limit=${limit}&page=${page}&category=${category}&name=${name}&sortBy=${sortBy}&sort=${sort}`
+      })
   }
 }
 
