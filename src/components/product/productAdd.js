@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Modal, Button, Form} from "react-bootstrap";
+import { Modal, Button, Form } from "react-bootstrap";
 
 import { connect } from "react-redux";
 import { postProduct } from "../redux/action/product";
+import { getCategory } from "../redux/action/category";
 
 class ProductAdd extends Component {
   state = {
@@ -11,8 +12,16 @@ class ProductAdd extends Component {
     image: "",
     category: 0,
     price: 0,
-    stock: 0,
+    stock: 0
   };
+
+  getCategory() {
+    this.props.dispatch(getCategory())
+  }
+
+  componentDidMount() {
+    this.getCategory()
+}
 
   onChangeValue = e => {
     this.setState({
@@ -28,7 +37,7 @@ class ProductAdd extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  onSubmitHandler = (e) => {
+  onSubmitHandler = e => {
     e.preventDefault();
     let data = new FormData();
     data.append("image", this.state.image);
@@ -37,11 +46,12 @@ class ProductAdd extends Component {
     data.append("category", this.state.category);
     data.append("price", this.state.price);
     data.append("stock", this.state.stock);
-      this.props.dispatch(postProduct(data));
-      this.props.onHandleClose();
+    this.props.dispatch(postProduct(data));
+    this.props.onHandleClose();
   };
 
   render() {
+    const { categorys } = this.props;
     console.log(this.props);
     return (
       <Modal show={this.props.show} onHide={this.props.onHandleClose}>
@@ -70,18 +80,21 @@ class ProductAdd extends Component {
                 onChange={this.onChangeValue}
               />
             </Form.Group>
-            <Form.Group>
-              <Form.Label>Category</Form.Label>
-              <Form.Control as="select" name="category" 
+            <Form.Label>Category</Form.Label>
+            <Form.Control
+              name="category"
               onChange={this.onChangeHandler}
-              >
-                <option selected disabled>
-                  Choose...
+              as="select"
+            >
+              <option selected value={0} disabled>
+                Choose...
+              </option>
+              {this.props.categorys.map((category, index) => (
+                <option key={index} value={category.id}>
+                  {category.name}
                 </option>
-                <option value={1}>Food</option>
-                <option value={2}>Drink</option>
-              </Form.Control>
-            </Form.Group>
+              ))}
+            </Form.Control>
             <Form.Group>
               <Form.Label>Image</Form.Label>
               <Form.Control
@@ -119,4 +132,11 @@ class ProductAdd extends Component {
   }
 }
 
-export default connect()(ProductAdd);
+const mapStateToProps = (state) =>{
+  return {
+    categorys: state.categorys.categorys
+  };
+};
+
+export default connect(mapStateToProps)(ProductAdd);
+

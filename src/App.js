@@ -13,8 +13,8 @@ function App() {
   return (
   <Provider store={store}>
     <Router>
-      <Route exact path="/" component={Product} />
-      <Route path="/cashier" component={Cashier} />
+    <Route exact path="/" component={Cashier} />
+      <Route  path="/product" component={Product} />
       <Route path="/login" component={Login} />
       <Route path="/category" component={Category} />
     </Router>

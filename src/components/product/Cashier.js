@@ -79,6 +79,9 @@ class Cashier extends Component {
   };
 
   componentDidMount() {
+    if (!localStorage.getItem('isAuth')) {
+      this.props.history.push('/login');
+  }
     this.getProductsCashier();
   }
 

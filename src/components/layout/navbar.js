@@ -4,9 +4,16 @@ import { connect } from "react-redux";
 
 class Navbar extends Component {
 
+  logout = () => {
+    localStorage.removeItem('user-id')
+    localStorage.removeItem('token')
+    localStorage.removeItem('isAuth')
+    localStorage.removeItem('status')
+}
+
   render() {
     return (
-      <nav className="navbar navbar-light" style={{ backgroundColor: "e3f2fd" }}>
+      <nav className="navbar navbar-light" style={{ background: "#eef0eb" }}>
         <a className="navbar-brand">
           Coffeeshop
         </a>
@@ -34,8 +41,10 @@ class Navbar extends Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link">
+              <Link className="nav-link a" to="/login" onClick={this.logout}>
                 Logout
+                </Link>
               </a>
             </li>
           </ul>

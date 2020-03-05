@@ -29,7 +29,6 @@ class Product extends Component {
     const data = {};
     this.props.dispatch(getProductsCashier(data));
   };
-  
 
   onClickMenu = e => {
     this.setState({ activeCategory: e.target.id });
@@ -141,8 +140,14 @@ class Product extends Component {
   };
 
   componentDidMount() {
-    this.getProductsCashier();
+    if (localStorage.getItem('status') !== 'admin') {
+      alert('You`re not authorized as administrator')
+      this.props.history.push('/')
   }
+
+  this.getProductsCashier();
+  }
+
 
   onShow = e => {
     this.setState({
@@ -162,7 +167,7 @@ class Product extends Component {
       <Container>
         <Navbar />
         <nav class="navbar navbar-light bg-light">
-          <ul class="navbar nav bg-light">
+          <ul class="navbar nav bg-light" style={{ background: "#eef0eb" }}>
             <li class="nav-item">
               <Link class="nav-link" id="" onClick={this.onClickMenu}>
                 All
@@ -258,9 +263,7 @@ class Product extends Component {
               </tr>
             ))}
           </tbody>
-        </Table>
-
-         
+        </Table>  
 
         <ProductAdd show={this.state.show} onHandleClose={this.onHandleClose} />
         <ProductDelete

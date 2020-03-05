@@ -23,16 +23,17 @@ class Login extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+    alert('ok')
 
     axios
       .post("http://localhost:8006/user/login", this.state)
       .then(res => {
-        console.log(res.data.token);
-
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("user-id", res.data.id);
-        localStorage.setItem("isAuth", true);
-        this.props.history.push("/");
+        console.log(res.data)
+        localStorage.setItem('token', res.data.token)
+        localStorage.setItem('user-id', res.data.id)
+        localStorage.setItem('status', res.data.status)
+        localStorage.setItem('isAuth', true)
+        this.props.history.push('/')
       })
       .catch(err => {
         console.log(err);
