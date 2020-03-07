@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 
 import { connect } from "react-redux";
-import { postProduct } from "../redux/action/product";
-import { getCategory } from "../redux/action/category";
+import { postProduct } from "../redux/actions/product";
+import { getCategory } from "../redux/actions/category";
 
 class ProductAdd extends Component {
   state = {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 
 import { connect } from "react-redux";
-import { updateCategory} from "../redux/action/category";
+import { updateCategory} from "../redux/actions/category";
 
 class CategoryUpdate extends Component {
   state = {

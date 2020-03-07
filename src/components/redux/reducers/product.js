@@ -16,24 +16,6 @@ const product = (state = initialState, action) => {
       };
 
     case "GET_PRODUCTS_FULFILLED":
-      // console.log(action.payload);
-      return {
-        ...state,
-        products: action.payload.data.result,
-      };
-
-      //PRODUCT CASHER
-      case "GET_PRODUCTSCASHIER_PENDING":
-      return {
-        ...state
-      };
-
-    case "GET_PRODUCTSCASHIER_REJECTED":
-      return {
-        ...state
-      };
-
-    case "GET_PRODUCTSCASHIER_FULFILLED":
       return {
         ...state,
         products: action.payload.data.result,

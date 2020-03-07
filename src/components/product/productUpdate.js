@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 
 import { connect } from "react-redux";
-import { updateProduct } from "../redux/action/product";
+import { updateProduct } from "../redux/actions/product";
 
 class ProductUpdate extends Component {
   state = {

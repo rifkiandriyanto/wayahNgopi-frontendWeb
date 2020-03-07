@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getCategory } from "../redux/action/category";
+import { getCategory } from "../redux/actions/category";
 
 import { Container, Row, Col, Button, Table } from "react-bootstrap";
 import CategoryAdd from "./categoryAdd";

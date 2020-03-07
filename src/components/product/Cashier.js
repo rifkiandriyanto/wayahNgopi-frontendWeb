@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import NavbarCategory from "../layout/navbarCategory";
-import { getProductsCashier } from "../redux/action/product";
+import { getProducts } from "../redux/actions/product";
 import { Link } from "react-router-dom";
 
 class Cashier extends Component {
@@ -13,9 +13,9 @@ class Cashier extends Component {
     activeCategory: ""
   };
 
-  getProductsCashier = () => {
+  getProducts = () => {
     const data = {};
-    this.props.dispatch(getProductsCashier(data));
+    this.props.dispatch(getProducts(data));
   };
   onClickMenu = e => {
     this.setState({ activeCategory: e.target.id });
@@ -27,7 +27,7 @@ class Cashier extends Component {
       sort: this.state.sort,
       by: this.state.by
     };
-    this.props.dispatch(getProductsCashier(data));
+    this.props.dispatch(getProducts(data));
   };
 
   onSort = e => {
@@ -39,7 +39,7 @@ class Cashier extends Component {
       sort: e.target.id,
       by: this.state.by
     };
-    this.props.dispatch(getProductsCashier(data));
+    this.props.dispatch(getProducts(data));
   };
 
   onBy = e => {
@@ -51,7 +51,7 @@ class Cashier extends Component {
       sortBy: this.state.sort,
       sort: e.target.id
     };
-    this.props.dispatch(getProductsCashier(data));
+    this.props.dispatch(getProducts(data));
   };
 
   onChangeSearch = e => {
@@ -63,7 +63,7 @@ class Cashier extends Component {
       sort: this.state.sort,
       by: this.state.by
     };
-    this.props.dispatch(getProductsCashier(data));
+    this.props.dispatch(getProducts(data));
   };
 
   changePage = e => {
@@ -75,14 +75,14 @@ class Cashier extends Component {
       sort: this.state.sort,
       by: this.state.by
     };
-    this.props.dispatch(getProductsCashier(data));
+    this.props.dispatch(getProducts(data));
   };
 
   componentDidMount() {
-    if (!localStorage.getItem('isAuth')) {
-      this.props.history.push('/login');
-  }
-    this.getProductsCashier();
+    if (!localStorage.getItem("isAuth")) {
+      this.props.history.push("/login");
+    }
+    this.getProducts();
   }
 
   render() {
@@ -135,44 +135,50 @@ class Cashier extends Component {
               />
             </form>
           </ul>
-          </nav>
+        </nav>
 
-          <div className="row">
-            {products.map(product => (
-              <div className="col-md-6 col-lg-4" key={product.id}>
-                <div
-                  className="card"
-                  style={{ width: "22rem", border: 'none',
-                  background: 'transparent'  }}
-                >
-                  <img
-                    src={product.image}
-                    className="card-img-top"
-                    alt="card img cap"
-                    height="200" width="200"
-                    style={{  borderRadius: '10px 10px',
-                      boxShadow: '-3px 3px 6px 3px rgba(247, 166, 166)'}}
-                  />
-                  <div className="card-body">
-                    <div style={{ float: "left", marginLeft: "-10px" }}>
-                      <p className="card-title" style={{ marginTop: "-15px" }}>
-                        {product.name}
-                      </p>
-                      <p className="card-text" style={{ marginTop: "-15px" }}>
-                        {product.description}
-                      </p>
-                      <h6
-                        className="card-text"
-                        style={{ marginTop: "-15px", fontWeight: "bolder" }}
-                      >
-                        Rp. {product.price}
-                      </h6>
-                    </div>
+        <div className="row">
+          {products.map(product => (
+            <div className="col-md-6 col-lg-4" key={product.id}>
+              <div
+                className="card"
+                style={{
+                  width: "22rem",
+                  border: "none",
+                  background: "transparent"
+                }}
+              >
+                <img
+                  src={product.image}
+                  className="card-img-top"
+                  alt="card img cap"
+                  height="200"
+                  width="200"
+                  style={{
+                    borderRadius: "10px 10px",
+                    boxShadow: "-3px 3px 6px 3px rgba(247, 166, 166)"
+                  }}
+                />
+                <div className="card-body">
+                  <div style={{ float: "left", marginLeft: "-10px" }}>
+                    <p className="card-title" style={{ marginTop: "-15px" }}>
+                      {product.name}
+                    </p>
+                    <p className="card-text" style={{ marginTop: "-15px" }}>
+                      {product.description}
+                    </p>
+                    <h6
+                      className="card-text"
+                      style={{ marginTop: "-15px", fontWeight: "bolder" }}
+                    >
+                      Rp. {product.price}
+                    </h6>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
         <nav aria-label="Page navigation example">
           <ul className="pagination justify-content-center">
             {this.props.pages.map(page => (
@@ -182,9 +188,7 @@ class Cashier extends Component {
                 id={page}
                 onClick={() => this.changePage(page)}
               >
-                <Link className="page-link">
-                  {page}
-                </Link>
+                <Link className="page-link">{page}</Link>
               </li>
             ))}
           </ul>

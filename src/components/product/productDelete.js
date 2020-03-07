@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
 import { connect } from 'react-redux';
-import { deleteProduct } from '../redux/action/product';
+import { deleteProduct } from '../redux/actions/product';
 
 const ProductDelete = (props) => {
     const { product, show, onHide, dispatch } = props;

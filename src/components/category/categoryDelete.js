@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
 import { connect } from 'react-redux';
-import { deleteCategory } from '../redux/action/category';
+import { deleteCategory } from '../redux/actions/category';
 
 const CategoryDelete = (props) => {
     const { category, show, onHide, dispatch } = props;

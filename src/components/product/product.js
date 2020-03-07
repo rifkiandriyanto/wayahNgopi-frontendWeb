@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Navbar from "../layout/navbar";
 import { Container, Row, Col, Button, Table } from "react-bootstrap";
 import { connect } from "react-redux";
-import { getProductsCashier } from "../redux/action/product";
+import { getProducts } from "../redux/actions/product";
 import { Link } from "react-router-dom";
 
 import ProductAdd from "./productAdd";
@@ -25,9 +25,9 @@ class Product extends Component {
     activeCategory: ""
   };
 
-  getProductsCashier = () => {
+  getProducts = () => {
     const data = {};
-    this.props.dispatch(getProductsCashier(data));
+    this.props.dispatch(getProducts(data));
   };
 
   //Sort Category
@@ -41,7 +41,7 @@ class Product extends Component {
       sort: this.state.sort,
       by: this.state.by
     };
-    this.props.dispatch(getProductsCashier(data));
+    this.props.dispatch(getProducts(data));
   };
 
   //Sort
@@ -54,7 +54,7 @@ class Product extends Component {
       sort: e.target.id,
       by: this.state.by
     };
-    this.props.dispatch(getProductsCashier(data));
+    this.props.dispatch(getProducts(data));
   };
 
   //SortBy
@@ -67,7 +67,7 @@ class Product extends Component {
       sortBy: this.state.sort,
       sort: e.target.id
     };
-    this.props.dispatch(getProductsCashier(data));
+    this.props.dispatch(getProducts(data));
   };
 
   //On search
@@ -80,7 +80,7 @@ class Product extends Component {
       sort: this.state.sort,
       by: this.state.by
     };
-    this.props.dispatch(getProductsCashier(data));
+    this.props.dispatch(getProducts(data));
   };
 
   //Pagination
@@ -93,7 +93,7 @@ class Product extends Component {
       sort: this.state.sort,
       by: this.state.by
     };
-    this.props.dispatch(getProductsCashier(data));
+    this.props.dispatch(getProducts(data));
   };
 
   // Delete
@@ -146,7 +146,7 @@ class Product extends Component {
       this.props.history.push("/");
     }
 
-    this.getProductsCashier();
+    this.getProducts();
   }
 
   onShow = e => {
