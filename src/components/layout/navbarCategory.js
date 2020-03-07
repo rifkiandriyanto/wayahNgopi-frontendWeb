@@ -1,5 +1,7 @@
+
+// eslint-disable-next-line
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 class NavbarCategory extends Component {
   logout = () => {
@@ -13,9 +15,10 @@ class NavbarCategory extends Component {
   render() {
     return (
       <nav className="navbar navbar-light"style={{ background: "#eef0eb" }}>
-        <a className="navbar-brand">
+        
+        <span className="navbar-brand">
           Coffeeshop
-        </a>
+        </span>
         <button
           className="navbar-toggler"
           type="button"
@@ -40,10 +43,10 @@ class NavbarCategory extends Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link">
-              <Link className="nav-link a" to="/login" onClick={this.logout}>
+              <a className="nav-link" href="/login" onClick={this.logout}>
+             
                 Logout
-                </Link>
+       
               </a>
             </li>
           </ul>

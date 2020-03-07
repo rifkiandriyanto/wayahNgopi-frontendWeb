@@ -51,7 +51,6 @@ class ProductAdd extends Component {
   };
 
   render() {
-    const { categorys } = this.props;
     console.log(this.props);
     return (
       <Modal show={this.props.show} onHide={this.props.onHandleClose}>
@@ -89,7 +88,7 @@ class ProductAdd extends Component {
               <option selected value={0} disabled>
                 Choose...
               </option>
-              {this.props.categorys.map((category, index) => (
+              {this.props.categories.map((category, index) => (
                 <option key={index} value={category.id}>
                   {category.name}
                 </option>
@@ -134,7 +133,7 @@ class ProductAdd extends Component {
 
 const mapStateToProps = (state) =>{
   return {
-    categorys: state.categorys.categorys
+    categories: state.categories.categories
   };
 };
 

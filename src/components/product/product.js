@@ -30,6 +30,7 @@ class Product extends Component {
     this.props.dispatch(getProductsCashier(data));
   };
 
+  //Sort Category
   onClickMenu = e => {
     this.setState({ activeCategory: e.target.id });
     if (e.target.id === "") this.setState({ activeCategory: "" });
@@ -43,6 +44,7 @@ class Product extends Component {
     this.props.dispatch(getProductsCashier(data));
   };
 
+  //Sort
   onSort = e => {
     this.setState({ sort: e.target.id });
     const data = {
@@ -55,6 +57,7 @@ class Product extends Component {
     this.props.dispatch(getProductsCashier(data));
   };
 
+  //SortBy
   onBy = e => {
     this.setState({ by: e.target.id });
     const data = {
@@ -67,6 +70,7 @@ class Product extends Component {
     this.props.dispatch(getProductsCashier(data));
   };
 
+  //On search
   onChangeSearch = e => {
     this.setState({ serachName: e.target.value });
     const data = {
@@ -79,6 +83,7 @@ class Product extends Component {
     this.props.dispatch(getProductsCashier(data));
   };
 
+  //Pagination
   changePage = e => {
     this.setState({ activePage: e });
     const data = {
@@ -90,10 +95,6 @@ class Product extends Component {
     };
     this.props.dispatch(getProductsCashier(data));
   };
-
-  // getProducts = () => {
-  //   this.props.dispatch(getProducts());
-  // };
 
   // Delete
   onSelectProductDelete = product => {
@@ -140,14 +141,13 @@ class Product extends Component {
   };
 
   componentDidMount() {
-    if (localStorage.getItem('status') !== 'admin') {
-      alert('You`re not authorized as administrator')
-      this.props.history.push('/')
-  }
+    if (localStorage.getItem("status") !== "admin") {
+      alert("You`re not authorized as administrator");
+      this.props.history.push("/");
+    }
 
-  this.getProductsCashier();
+    this.getProductsCashier();
   }
-
 
   onShow = e => {
     this.setState({
@@ -211,7 +211,7 @@ class Product extends Component {
               />
             </form>
           </ul>
-          </nav>
+        </nav>
         <Row style={{ marginTop: "20px", marginButtom: "20px" }}>
           <Col sm={10}>
             <h5>Product</h5>
@@ -263,7 +263,7 @@ class Product extends Component {
               </tr>
             ))}
           </tbody>
-        </Table>  
+        </Table>
 
         <ProductAdd show={this.state.show} onHandleClose={this.onHandleClose} />
         <ProductDelete
@@ -274,12 +274,12 @@ class Product extends Component {
         />
         <ProductUpdate
           show={this.state.showUpdate}
-          onHide={this.handleCloseUpdate}
+          handleCloseUpdate={this.handleCloseUpdate}
           onSelectProductDelete={this.onSelectProductUpdate}
           product={this.state.selectProductUpdate}
         />
 
-<nav aria-label="Page navigation example">
+        <nav aria-label="Page navigation example">
           <ul className="pagination justify-content-center">
             {this.props.pages.map(page => (
               <li
@@ -288,9 +288,7 @@ class Product extends Component {
                 id={page}
                 onClick={() => this.changePage(page)}
               >
-                <Link className="page-link">
-                  {page}
-                </Link>
+                <Link className="page-link">{page}</Link>
               </li>
             ))}
           </ul>

@@ -3,14 +3,20 @@ import { connect } from "react-redux";
 import { getCategory } from "../redux/action/category";
 
 import { Container, Row, Col, Button, Table } from "react-bootstrap";
-import AddCategory from "./addCategory";
-import EditCategory from "./editCategory";
-import DeleteCategory from "./deleteCategory";
+import CategoryAdd from "./categoryAdd";
+import CategoryUpdate from "./categoryUpdate";
+import CategoryDelete from "./categoryDelete";
 import Navbar from "../layout/navbar";
 
 class Category extends Component {
   state = {
-    idCategory: ""
+    idCategory: "",
+
+    selectCategoryUpdate: null,
+    selectCategorytDelete: null,
+    show: false,
+    showDelete: false,
+    showUpdate: false
   };
 
   getCategory() {
@@ -21,32 +27,74 @@ class Category extends Component {
     this.getCategory();
   }
 
-  onClickHandler = e => {
-    console.log(e.target.value);
+  // Delete
+  onSelectCategoryDelete = category => {
     this.setState({
-      idCategory: e.target.value
+      selectCategoryDelete: category,
+      showDelete: true
+    });
+  };
+
+  handleCloseDelete = () => {
+    this.setState({
+      showDelete: false
+    });
+  };
+
+  handleShowDelete = category => {
+    console.log(category);
+    this.setState({
+      showDelete: true,
+      selectCategoryDelete: category
+    });
+  };
+
+  // Update
+  onSelectCategoryUpdate = category => {
+    this.setState({
+      selectCategoryUpdate: category,
+      showUpdate: true
+    });
+  };
+
+  handleCloseUpdate = () => {
+    this.setState({
+      showUpdate: false
+    });
+  };
+
+  handleShowUpdate = category => {
+    console.log(category);
+    this.setState({
+      showUpdate: true,
+      selectCategoryUpdate: category
+    });
+  };
+
+  onShow = e => {
+    this.setState({
+      show: true
+    });
+  };
+
+  onHandleClose = () => {
+    this.setState({
+      show: false
     });
   };
 
   render() {
-    const { categorys } = this.props;
+    const { categories } = this.props;
     return (
       <Container>
         <Navbar />
         <Row style={{ marginTop: "20px", marginBottom: "20px" }}>
-          <AddCategory />
-          <EditCategory idCategory={this.state.idCategory} />
-          <DeleteCategory idCategory={this.state.idCategory} />
+        
           <Col sm={10}>
             <h5>Category</h5>
           </Col>
           <Col sm={2}>
-            <Button
-              variant="outline-info"
-              size="sm"
-              data-toggle="modal"
-              data-target="#addCategory"
-            >
+            <Button variant="outline-info" size="sm" onClick={this.onShow}>
               Add Category
             </Button>
           </Col>
@@ -60,35 +108,46 @@ class Category extends Component {
             </tr>
           </thead>
           <tbody>
-            {categorys.map((category, index) => (
+            {categories.map((category, index) => (
               <tr key={index}>
                 <td>{category.id}</td>
                 <td>{category.name}</td>
                 <td>
-                  <Button
-                    onClick={this.onClickHandler}
-                    data-toggle="modal"
-                    data-target="#editCategory"
-                    variant="outline-warning"
-                    value={category.id}
-                  >
-                    Edit
-                  </Button>
-                  {'      '}
-                  <Button
-                    onClick={this.onClickHandler}
-                    data-toggle="modal"
-                    data-target="#deleteCategory"
-                    variant="outline-danger"
-                    value={category.id}
-                  >
-                    Delete
-                  </Button>
+                <Button
+                      variant="outline-warning"
+                      onClick={() => this.handleShowUpdate(category)}
+                    >
+                      Edit
+                    </Button>
+                    {"      "}
+                    <Button
+                      variant="outline-danger"
+                      onClick={() => this.handleShowDelete(category)}
+                    >
+                      Delete
+                    </Button>
                 </td>
               </tr>
             ))}
           </tbody>
         </Table>
+
+        <CategoryAdd
+          show={this.state.show}
+          onHandleClose={this.onHandleClose}
+        />
+        <CategoryDelete
+          show={this.state.showDelete}
+          onHide={this.handleCloseDelete}
+          onSelectCategoryDelete={this.onSelectCategoryDelete}
+          category={this.state.selectCategoryDelete}
+        />
+        <CategoryUpdate
+          show={this.state.showUpdate}
+          handleCloseUpdate={this.handleCloseUpdate}
+          onSelectCategoryDelete={this.onSelectCategoryUpdate}
+          category={this.state.selectCategoryUpdate}
+        />
       </Container>
     );
   }
@@ -96,7 +155,7 @@ class Category extends Component {
 
 const mapStateToProps = state => {
   return {
-    categorys: state.categorys.categorys
+    categories: state.categories.categories
   };
 };
 

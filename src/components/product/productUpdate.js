@@ -14,6 +14,8 @@ class ProductUpdate extends Component {
     stock: 0
   };
 
+  
+
   componentWillReceiveProps({ product }) {
     this.onSetValue(product);
 }
@@ -22,7 +24,6 @@ onSetValue = (product) => {
     this.setState({
         name: product.name,
         description: product.description,
-        //image: product.image,
         category: product.category,
         price: product.price,
         stock: product.stock
@@ -57,11 +58,11 @@ onSetValue = (product) => {
         if (this.state.image === "") {
             data.delete("image")
             await this.props.dispatch(updateProduct(id, data));
-            await this.props.onHide();
+            await this.props.handleCloseUpdate();
         }
         else {
             await this.props.dispatch(updateProduct(id, data));
-            await this.props.onHide();
+            await this.props.handleCloseUpdate();
         }
     }
   render() {

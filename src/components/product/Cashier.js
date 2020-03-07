@@ -148,7 +148,7 @@ class Cashier extends Component {
                   <img
                     src={product.image}
                     className="card-img-top"
-                    alt="card image cap"
+                    alt="card img cap"
                     height="200" width="200"
                     style={{  borderRadius: '10px 10px',
                       boxShadow: '-3px 3px 6px 3px rgba(247, 166, 166)'}}

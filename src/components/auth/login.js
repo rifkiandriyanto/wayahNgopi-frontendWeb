@@ -23,7 +23,7 @@ class Login extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    alert('ok')
+    // alert('ok')
 
     axios
       .post("http://localhost:8006/user/login", this.state)

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 class Navbar extends Component {
@@ -14,9 +14,9 @@ class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-light" style={{ background: "#eef0eb" }}>
-        <a className="navbar-brand">
+        <span className="navbar-brand">
           Coffeeshop
-        </a>
+        </span>
         <button
           className="navbar-toggler"
           type="button"
@@ -41,10 +41,9 @@ class Navbar extends Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link">
-              <Link className="nav-link a" to="/login" onClick={this.logout}>
+              <a className="nav-link" href="/login" onClick={this.logout}>
                 Logout
-                </Link>
+          
               </a>
             </li>
           </ul>
@@ -54,11 +53,6 @@ class Navbar extends Component {
   }
 }
 
-// const searchStateToProps = state => {
-//   //console.log(state)
-//   return {
-//     products: state.products.products
-//   };
-// };
+
 
 export default connect()(Navbar);
