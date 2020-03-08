@@ -89,7 +89,6 @@ class Category extends Component {
       <Container>
         <Navbar />
         <Row style={{ marginTop: "20px", marginBottom: "20px" }}>
-        
           <Col sm={10}>
             <h5>Category</h5>
           </Col>
@@ -113,19 +112,19 @@ class Category extends Component {
                 <td>{category.id}</td>
                 <td>{category.name}</td>
                 <td>
-                <Button
-                      variant="outline-warning"
-                      onClick={() => this.handleShowUpdate(category)}
-                    >
-                      Edit
-                    </Button>
-                    {"      "}
-                    <Button
-                      variant="outline-danger"
-                      onClick={() => this.handleShowDelete(category)}
-                    >
-                      Delete
-                    </Button>
+                  <Button
+                    variant="outline-warning"
+                    onClick={() => this.handleShowUpdate(category)}
+                  >
+                    Edit
+                  </Button>
+                  {"      "}
+                  <Button
+                    variant="outline-danger"
+                    onClick={() => this.handleShowDelete(category)}
+                  >
+                    Delete
+                  </Button>
                 </td>
               </tr>
             ))}

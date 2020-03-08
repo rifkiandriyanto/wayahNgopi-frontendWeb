@@ -14,21 +14,19 @@ class ProductUpdate extends Component {
     stock: 0
   };
 
-  
-
   componentWillReceiveProps({ product }) {
     this.onSetValue(product);
-}
+  }
 
-onSetValue = (product) => {
+  onSetValue = product => {
     this.setState({
-        name: product.name,
-        description: product.description,
-        category: product.category,
-        price: product.price,
-        stock: product.stock
-    })
-}
+      name: product.name,
+      description: product.description,
+      category: product.category,
+      price: product.price,
+      stock: product.stock
+    });
+  };
 
   onChangeValue = e => {
     this.setState({
@@ -39,32 +37,30 @@ onSetValue = (product) => {
   handleFileChange = e => {
     this.setState({ [e.target.name]: e.target.files[0] });
   };
-  
 
   onChangeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  onSubmit = async (e) => {
-        e.preventDefault();
-        const id = this.props.product.id;
-        const data = new FormData();
-        data.append("name", this.state.name);
-        data.append("description", this.state.description);
-        data.append("image", this.state.image);
-        data.append("category", this.state.category);
-        data.append("price", this.state.price);
-        data.append("stock", this.state.stock);
-        if (this.state.image === "") {
-            data.delete("image")
-            await this.props.dispatch(updateProduct(id, data));
-            await this.props.handleCloseUpdate();
-        }
-        else {
-            await this.props.dispatch(updateProduct(id, data));
-            await this.props.handleCloseUpdate();
-        }
+  onSubmit = async e => {
+    e.preventDefault();
+    const id = this.props.product.id;
+    const data = new FormData();
+    data.append("name", this.state.name);
+    data.append("description", this.state.description);
+    data.append("image", this.state.image);
+    data.append("category", this.state.category);
+    data.append("price", this.state.price);
+    data.append("stock", this.state.stock);
+    if (this.state.image === "") {
+      data.delete("image");
+      await this.props.dispatch(updateProduct(id, data));
+      await this.props.handleCloseUpdate();
+    } else {
+      await this.props.dispatch(updateProduct(id, data));
+      await this.props.handleCloseUpdate();
     }
+  };
   render() {
     console.log(this.props);
     return (

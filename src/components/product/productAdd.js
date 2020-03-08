@@ -16,12 +16,12 @@ class ProductAdd extends Component {
   };
 
   getCategory() {
-    this.props.dispatch(getCategory())
+    this.props.dispatch(getCategory());
   }
 
   componentDidMount() {
-    this.getCategory()
-}
+    this.getCategory();
+  }
 
   onChangeValue = e => {
     this.setState({
@@ -131,11 +131,10 @@ class ProductAdd extends Component {
   }
 }
 
-const mapStateToProps = (state) =>{
+const mapStateToProps = state => {
   return {
     categories: state.categories.categories
   };
 };
 
 export default connect(mapStateToProps)(ProductAdd);
-

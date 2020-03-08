@@ -2,26 +2,26 @@ import React, { Component } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 
 import { connect } from "react-redux";
-import { updateCategory} from "../redux/actions/category";
+import { updateCategory } from "../redux/actions/category";
 
 class CategoryUpdate extends Component {
   state = {
     name: ""
   };
 
-onSetValue = (category) => {
+  onSetValue = category => {
     this.setState({
-        name: category.name
-    })
-}
+      name: category.name
+    });
+  };
 
-onChangeHandler = event => {
+  onChangeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-componentWillReceiveProps({ category }) {
+  componentWillReceiveProps({ category }) {
     this.onSetValue(category);
-}
+  }
 
   onChangeValue = e => {
     this.setState({
@@ -29,15 +29,15 @@ componentWillReceiveProps({ category }) {
     });
   };
 
-  onSubmit = async (e) => {
-        e.preventDefault();
-        const id = this.props.category.id;
-        const data = {
-          name: this.state.name
-      }
-            await this.props.dispatch(updateCategory(id, data));
-            await this.props.handleCloseUpdate();
-    }
+  onSubmit = async e => {
+    e.preventDefault();
+    const id = this.props.category.id;
+    const data = {
+      name: this.state.name
+    };
+    await this.props.dispatch(updateCategory(id, data));
+    await this.props.handleCloseUpdate();
+  };
   render() {
     console.log(this.props);
     return (

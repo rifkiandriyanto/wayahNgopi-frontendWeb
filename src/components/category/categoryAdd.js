@@ -21,12 +21,12 @@ class CategoryAdd extends Component {
   onSubmitHandler = e => {
     e.preventDefault();
     const data = {
-        name: this.state.name
-    }
-  
+      name: this.state.name
+    };
+
     this.props.dispatch(postCategory(data));
     this.props.onHandleClose();
-    console.log(this.state)
+    console.log(this.state);
   };
 
   render() {
@@ -58,6 +58,4 @@ class CategoryAdd extends Component {
   }
 }
 
-
 export default connect()(CategoryAdd);
-

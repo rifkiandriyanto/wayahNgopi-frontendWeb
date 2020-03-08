@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import NavbarCategory from "../layout/navbarCategory";
+import ProductItem from "../product/productItem"
 import { getProducts } from "../redux/actions/product";
 import { Link } from "react-router-dom";
 
-class Cashier extends Component {
+class Home extends Component {
   state = {
     activePage: 1,
     sort: "id",
@@ -90,8 +91,8 @@ class Cashier extends Component {
     return (
       <div className="container">
         <NavbarCategory />
-        <nav class="navbar navbar-light bg-light">
-          <ul class="navbar nav bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light" style={{ background: "##d1e3e3" }}>
+        <ul class="navbar-nav">
             <li class="nav-item">
               <Link class="nav-link" id="" onClick={this.onClickMenu}>
                 All
@@ -139,44 +140,7 @@ class Cashier extends Component {
 
         <div className="row">
           {products.map(product => (
-            <div className="col-md-6 col-lg-4" key={product.id}>
-              <div
-                className="card"
-                style={{
-                  width: "22rem",
-                  border: "none",
-                  background: "transparent"
-                }}
-              >
-                <img
-                  src={product.image}
-                  className="card-img-top"
-                  alt="card img cap"
-                  height="200"
-                  width="200"
-                  style={{
-                    borderRadius: "10px 10px",
-                    boxShadow: "-3px 3px 6px 3px rgba(247, 166, 166)"
-                  }}
-                />
-                <div className="card-body">
-                  <div style={{ float: "left", marginLeft: "-10px" }}>
-                    <p className="card-title" style={{ marginTop: "-15px" }}>
-                      {product.name}
-                    </p>
-                    <p className="card-text" style={{ marginTop: "-15px" }}>
-                      {product.description}
-                    </p>
-                    <h6
-                      className="card-text"
-                      style={{ marginTop: "-15px", fontWeight: "bolder" }}
-                    >
-                      Rp. {product.price}
-                    </h6>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ProductItem product={product} key={product.id} />
           ))}
         </div>
         <nav aria-label="Page navigation example">
@@ -198,11 +162,11 @@ class Cashier extends Component {
   }
 }
 
-const mapCashier = state => {
+const mapHome = state => {
   return {
     products: state.products.products,
     pages: state.products.pages
   };
 };
 
-export default connect(mapCashier)(Cashier);
+export default connect(mapHome)(Home);

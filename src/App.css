@@ -5,70 +5,11 @@
   padding: 0;
 }
 
-
-/* .products .card img{
-  border-radius: 10px 10px;
-  box-shadow: -3px 3px 6px 3px rgba(247, 166, 166);
-} */
-
-.add{
-  position: fixed;
-  display: block;
-  top: 20%;
-  left: 2%;
-}
-.logout{
-  position: fixed;
-  display: block;
-  top: 30%;
-  left: 2%;
+html, body{
+  height: 100vh;
+  background: linear-gradient(to bottom, #d4fafa, #ba95de);
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 }
 
-@media (min-width: 768px) { 
-  body{
-    overflow: auto;
-  }
-  nav.navbar{
-    box-shadow:0px 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .nav-link:hover::after{
-    content: '';
-    display: block;
-    border-bottom: 3px solid lightblue;
-    margin: 0 auto -3px;
-  }
-
-  .nav-link.active::after{
-    content: '';
-    display: block;
-    border-bottom: 3px solid lightblue;
-    margin: 0 auto -3px;
-  }
-
-  .products{
-    padding-top: 2%;
-    padding-left: 15%;
-    padding-right: 15%;
-    padding-bottom: 3%;
-  }
-
-  /* .products .card{
-    border: none;
-    background: transparent;
-  } */
-
-  .navbar-nav{
-    padding-right: 3%;
-  }
-} 
-
-
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */

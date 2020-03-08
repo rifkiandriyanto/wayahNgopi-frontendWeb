@@ -3,20 +3,17 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class Navbar extends Component {
-
   logout = () => {
-    localStorage.removeItem('user-id')
-    localStorage.removeItem('token')
-    localStorage.removeItem('isAuth')
-    localStorage.removeItem('status')
-}
+    localStorage.removeItem("user-id");
+    localStorage.removeItem("token");
+    localStorage.removeItem("isAuth");
+    localStorage.removeItem("status");
+  };
 
   render() {
     return (
       <nav className="navbar navbar-light" style={{ background: "#eef0eb" }}>
-        <span className="navbar-brand">
-          Coffeeshop
-        </span>
+        <span className="navbar-brand">Coffeeshop</span>
         <button
           className="navbar-toggler"
           type="button"
@@ -43,7 +40,6 @@ class Navbar extends Component {
             <li className="nav-item">
               <a className="nav-link" href="/login" onClick={this.logout}>
                 Logout
-          
               </a>
             </li>
           </ul>
@@ -52,7 +48,5 @@ class Navbar extends Component {
     );
   }
 }
-
-
 
 export default connect()(Navbar);

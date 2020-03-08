@@ -1,24 +1,20 @@
-
 // eslint-disable-next-line
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 class NavbarCategory extends Component {
   logout = () => {
-    localStorage.removeItem('user-id')
-    localStorage.removeItem('token')
-    localStorage.removeItem('isAuth')
-    localStorage.removeItem('status')
-}
-
+    localStorage.removeItem("user-id");
+    localStorage.removeItem("token");
+    localStorage.removeItem("isAuth");
+    localStorage.removeItem("status");
+  };
 
   render() {
     return (
-      <nav className="navbar navbar-light"style={{ background: "#eef0eb" }}>
-        
-        <span className="navbar-brand">
-          Coffeeshop
-        </span>
+      <nav className="navbar navbar-expand-lg navbar-light" style={{ background: "##d1e3e3" }}>
+        <span className="navbar-brand">Coffeeshop</span>
         <button
           className="navbar-toggler"
           type="button"
@@ -44,15 +40,27 @@ class NavbarCategory extends Component {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/login" onClick={this.logout}>
-             
                 Logout
-       
               </a>
+            </li>
+            <li className="nav-item">
+            <Link className="nav-link a" to="/cart">
+                  Cart {"   "}
+                  <span className="badge badge-info">{this.props.number}</span>
+                </Link>
             </li>
           </ul>
         </div>
       </nav>
     );
   }
+
 }
-export default NavbarCategory
+
+  const getNumber = state => {
+    return {
+      number: state.cart.totalPurchase
+    }
+  }
+
+export default connect(getNumber)(NavbarCategory);
