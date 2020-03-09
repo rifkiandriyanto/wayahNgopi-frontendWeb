@@ -9,7 +9,7 @@ export const postCart = data => {
 
 export const manipulateItem = data => {
   return {
-    type: "MANIPUTLATE_QUANTITY",
+    type: "MANIPULATE_ITEM",
     payload: { data }
   };
 };

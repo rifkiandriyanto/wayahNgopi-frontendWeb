@@ -5,17 +5,7 @@ const initialState = {
 
 const cart = (state = initialState, action) => {
   switch (action.type) {
-    case "POST_CART_PENDING":
-      return {
-        ...state
-      };
-
-    case "POST_CART_REJECTED":
-      return {
-        ...state
-      };
-
-    case "POST_CART_FULFILLED":
+    case "POST_CART":
       const newDataCart = [...state.cart, action.payload.data];
       return {
         ...state,
@@ -23,33 +13,7 @@ const cart = (state = initialState, action) => {
         totalPurchase: state.totalPurchase + 1
       };
 
-    case "CHECKOUT_PENDING":
-      return {
-        ...state
-      };
-
-    case "CHECKOUT_REJECTED":
-      return {
-        ...state
-      };
-
-    case "CHECKOUT_FULFILLED":
-      return {
-        cart: [],
-        totalPurchase: 0
-      };
-
-    case "MANIPULATE_ITEM_PENDING":
-      return {
-        ...state
-      };
-
-    case "MANIPULATE_ITEM_REJECTED":
-      return {
-        ...state
-      };
-
-    case "MANIPULATE_ITEM_FULFILLED":
+    case "MANIPULATE_ITEM":
       console.log(action);
       const newProductAfterUpdate = state.cart.map(product => {
         if (product.productId === action.payload.data.productId) {
@@ -70,6 +34,22 @@ const cart = (state = initialState, action) => {
         ...state,
         cart: newProductAfterDelete,
         totalPurchase: state.totalPurchase - 1
+      };
+
+    case "CHECKOUT_PENDING":
+      return {
+        ...state
+      };
+
+    case "CHECKOUT_REJECTED":
+      return {
+        ...state
+      };
+
+    case "CHECKOUT_FULFILLED":
+      return {
+        cart: [],
+        totalPurchase: 0
       };
     default:
       return state;

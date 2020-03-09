@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Navbar from "../layout/navbar";
+import NavbarCategory from "../layout/navbarCategory";
 import uniqid from "uniqid";
-import { checkout, manipulateItem, deleteCart } from "../redux/actions/cart";
+import {
+  checkout,
+  manipulateItem,
+  deleteCart
+} from "../redux/actions/cart";
 
 class Cart extends Component {
   state = {
     cashier: localStorage.getItem("user-id"),
-    totalPrice: 0
+    tPrice: 0
   };
-
-  //add qty
   addQuantity = data => {
     if (data.quantity < data.stock) {
       data.quantity += 1;
       this.props.dispatch(manipulateItem(data));
     }
   };
-
-  //redudance quantity if add < 1
   reduceQuantity = data => {
     if (data.quantity > 1) {
       data.quantity -= 1;
@@ -26,44 +26,42 @@ class Cart extends Component {
     }
   };
 
-  //Delete Item from Order
   deleteCart = id => {
     this.props.dispatch(deleteCart(id));
   };
 
-  //count total price
-  countTotal = () => {
-    var totalPrice = 0;
-    this.props.productsInCart.forEach(e => {
-      totalPrice += e.price * e.quantity;
+  totalPayment = () => {
+    var tPrice = 0;
+    this.props.productsInCart.map(e => {
+      tPrice += e.price * e.quantity;
     });
     this.setState({
-      totalPrice: totalPrice
+      tPrice: tPrice
     });
   };
 
   componentDidMount() {
-    this.countTotal();
+    this.totalPayment();
   }
 
-  orderHandler = () => {
+  purchaseHandler = () => {
     const data = {
-      idTransaction: `${uniqid()}`,
+      id_transaction: `${uniqid()}`,
       products: this.props.productsInCart
     };
     this.props.dispatch(checkout(data));
   };
-render() {
+  render() {
     const ViewCart = () => {
-        if (this.props.productsInCart.length < 1) {
-            return(
-                <h3 style={{ marginTop: "20px" }}>
-                  Hey, your shophing cart is empety!
-                </h3>
-            );
-        } else {
-          return(
-            <div
+      if (this.props.productsInCart.length < 1) {
+        return (
+          <h3 style={{ marginTop: "20px" }}>
+           Your carts is empety
+          </h3>
+        );
+      } else {
+        return (
+          <div
             className="col-8"
             style={{ marginTop: "15px", paddingBottom: "40px" }}
           >
@@ -120,7 +118,7 @@ render() {
                           cursor: "pointer",
                           color: "grey"
                         }}
-                        onClick={() => this.deleteFromCart(purchase.productId)}
+                        onClick={() => this.deleteCart(purchase.productId)}
                       >
                         delete
                       </i>
@@ -154,7 +152,7 @@ render() {
                       className="modal-title"
                       id="exampleModalScrollableTitle"
                     >
-                      Cofeeshop
+                     Coffeeshop
                     </h5>
                     <button
                       type="button"
@@ -165,6 +163,7 @@ render() {
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
+
                   <div className="modal-body">
                     <div className="container-fluid">
                       <p>Cashier #{this.state.cashier}</p>
@@ -185,6 +184,8 @@ render() {
                       </button>
                     </div>
                   </div>
+
+
                 </div>
               </div>
             </div>
@@ -194,7 +195,7 @@ render() {
     };
     return (
       <div>
-        <Navbar />
+        <NavbarCategory />
         <div className="container">
           <div className="row justify-content-md-center">
             <div className="col-8" style={{ marginTop: "15px" }}>
