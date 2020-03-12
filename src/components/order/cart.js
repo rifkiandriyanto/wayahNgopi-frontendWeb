@@ -52,7 +52,7 @@ class Cart extends Component {
 
   countTotal = () => {
     var total = 0;
-    this.props.productsInCart.forEach(e => {
+    this.props.productsInCart.map(e => {
       total += e.price * e.quantity;
     });
     this.setState({
@@ -66,11 +66,7 @@ class Cart extends Component {
       products: this.props.productsInCart
     };
     this.props.dispatch(checkout(data));
-    // var printcontent = document.getElementById("purchase-detail").innerHTML;
-    // window.frames["print_frame"].document.body.innerHTML =
-    //   `<style>*{font-size:8px;} button{display:none}</style>` + printcontent;
-    // window.frames["print_frame"].window.focus();
-    // window.frames["print_frame"].window.print();
+    
   };
   
   render() {
@@ -97,6 +93,7 @@ class Cart extends Component {
         );
       }
     };
+
     const PriceParsed = data => {
       return (
         <span>
@@ -111,13 +108,15 @@ class Cart extends Component {
             .reverse()
             .join("")}
         </span>
+            
       );
     };
+
     const ViewCart = () => {
       if (this.props.productsInCart.length < 1) {
         return (
           <div className="col-6 mt-2">
-            <h3 className="mt-3">Ups... There is no product to buy</h3>
+            <h3 className="mt-3">Your Cart is Empety</h3>
           </div>
         );
       } else {
@@ -214,7 +213,6 @@ class Cart extends Component {
           </div>
           <div className="col-4 cool"></div>
         </div>
-
         <div
           className="modal fade"
           id="purchase-detail"
