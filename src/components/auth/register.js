@@ -96,26 +96,6 @@ class Register extends Component {
                     required
                   />
                 </div>
-                <div className='form-group'>
-                  <input
-                    type='text'
-                    className='form-control'
-                    placeholder='Enter address'
-                    name='provinsi'
-                    onChange={this.onChange}
-                    required
-                  />
-                </div>
-                <div className='form-group'>
-                  <input
-                    type='text'
-                    className='form-control'
-                    placeholder='Enter address'
-                    name='kota'
-                    onChange={this.onChange}
-                    required
-                  />
-                </div>
                 <button
                   onClick={this.onSubmit}
                   type='submit'
@@ -123,7 +103,7 @@ class Register extends Component {
                 >
                   Register
                 </button>
-                ||
+                
                 <Link className='btn btn-warning' to={'/login'}>
                   Login
                 </Link>

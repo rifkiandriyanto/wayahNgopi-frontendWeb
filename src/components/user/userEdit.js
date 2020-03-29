@@ -25,8 +25,6 @@ class UserEdit extends Component {
       username: user.username,
       password: user.password,
       alamat: user.alamat,
-      provinsi: user.provinsi,
-      kota: user.kota,
       status: user.status,
     });
   };
@@ -102,28 +100,6 @@ class UserEdit extends Component {
                 name='alamat'
                 onChange={this.onChange}
                 value={this.state.alamat}
-              />
-            </div>
-            <div className='form-group'>
-            <label>Provinsi</label>
-              <input
-                type='text'
-                className='form-control'
-                placeholder='Enter Province'
-                name='provinsi'
-                onChange={this.onChange}
-                value={this.state.provinsi}
-              />
-            </div>
-            <div className='form-group'>
-            <label>Kota</label>
-              <input
-                type='text'
-                className='form-control'
-                placeholder='Enter City'
-                name='kota'
-                onChange={this.onChange}
-                value={this.state.kota}
               />
             </div>
             <div className='form-group'>

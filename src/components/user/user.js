@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { Container, Col, Row, Button, Table } from 'react-bootstrap';
-import UserItem from './userItem';
-import { connect } from 'react-redux';
-import { getUser } from '../redux/actions/user';
-import UserAdd from './userAdd';
-import UserDelete from './userDelete';
-import UserEdit from './userEdit';
-import Navbar from '../layout/navbar';
+import React, { Component } from "react";
+import { Container, Col, Row, Button, Table } from "react-bootstrap";
+import UserItem from "./userItem";
+import { connect } from "react-redux";
+import { getUser } from "../redux/actions/user";
+import UserAdd from "./userAdd";
+import UserDelete from "./userDelete";
+import UserEdit from "./userEdit";
+import Navbar from "../layout/navbar";
 
 class User extends Component {
   state = {
@@ -14,7 +14,7 @@ class User extends Component {
     showEdit: false,
     showDelete: false,
     selectUser: null,
-    selectUserDelete: null,
+    selectUserDelete: null
   };
   componentDidMount() {
     this.getAllUser();
@@ -26,128 +26,133 @@ class User extends Component {
 
   handleShow = () => {
     this.setState({
-      show: true,
+      show: true
     });
   };
 
   handleClose = () => {
     this.setState({
-      show: false,
+      show: false
     });
   };
-  handleShowEdit = () => {
+  
+  handleShowEdit = (user) => {
     this.setState({
-      showEdit: true,
+      selectUser: user,
+      showEdit: true
     });
   };
 
   handleCloseEdit = () => {
     this.setState({
-      showEdit: false,
+      showEdit: false
     });
   };
-  handleShowDelete = () => {
+  handleShowDelete = (user) => {
     this.setState({
-      showDelete: true,
+      selectUserDelete: user,
+      showDelete: true
     });
   };
 
   handleCloseDelete = () => {
     this.setState({
-      showDelete: false,
+      showDelete: false
     });
   };
   onSelectItemUserEdit = user => {
     this.setState({
       selectUser: user,
-      showEdit: true,
+      showEdit: true
     });
   };
   onSelectUserDelete = user => {
     this.setState({
       selectUserDelete: user,
-      showDelete: true,
+      showDelete: true
     });
   };
-  onLogout() {
-    localStorage.removeItem('user-id');
-    localStorage.removeItem('token');
-    localStorage.removeItem('status');
-    localStorage.removeItem('isAuth');
-    localStorage.removeItem('name');
-    this.props.history.push('/login');
-  }
-
   render() {
     console.log(this.props);
     const { user } = this.props;
-    const itemUser = user.user.map((user, index) => (
-      <UserItem
-        user={user}
-        key={index}
-        onSelectItemUserEdit={this.onSelectItemUserEdit}
-        onSelectUserDelete={this.onSelectUserDelete}
-      />
-    ));
-
     return (
-      <Row style={{ backgroundColor: '#ebebeb', height: '100vh' }}>
-        <Navbar onClick={this.onLogout.bind(this)} />
-        <Container style={{ marginTop: '5%', paddingTop: '2%' }}>
-          <div
-            class='card'
-            style={{ padding: 10, boxShadow: '10px 5px 10px #2222228c' }}
-          >
-            <Row style={{ marginBottom: '20px' }}>
-              <Col sm={10}>
-                <h5>Manage users</h5>
-              </Col>
-              <Col sm={2}>
-                <Button
-                  type='button'
-                  className=' btn btn-primary btn-outline-light'
-                  data-toggle='modal'
-                  data-target='#exampleModal'
-                  style={{ backgroundColor: '#f1a98c', border: 'transparent' }}
-                  onClick={this.handleShow}
-                >
-                  Add User
-                </Button>
-              </Col>
-            </Row>
-            <Table>
-              <thead>
-                <tr>
-                  <th scope='col'>#</th>
-                  <th scope='col'>Name</th>
-                  <th scope='col'>Email</th>
-                  <th scope='col'>Role Id</th>
-                  <th scope='col'>Actions</th>
-                </tr>
-              </thead>
-              <tbody>{itemUser}</tbody>
-            </Table>
-            <UserAdd show={this.state.show} onHide={this.handleClose} />
-            <UserEdit
-              show={this.state.showEdit}
-              onHide={this.handleCloseEdit}
-              user={this.state.selectUser}
-            />
-            <UserDelete
-              show={this.state.showDelete}
-              onHide={this.handleCloseDelete}
-              user={this.state.selectUserDelete}
-            />
-          </div>
-        </Container>
-      </Row>
+      <Container>
+        <Navbar />
+        <Row style={{ marginTop: "20px", marginBottom: "20px" }}>
+          <Col sm={10}>
+            <h5>User</h5>
+          </Col>
+          <Col sm={2}>
+            <Button
+              variant="outline-info"
+              data-toggle="modal"
+              data-target="#exampleModal"
+              size="sm"
+              onClick={this.handleShow}
+            >
+              Add User
+            </Button>
+          </Col>
+        </Row>
+        <Table responsive>
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {user.map((user, index) => (
+              <tr key={index}>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.status}</td>
+                <td>
+                  <Button
+                    variant="outline-warning"
+                    onClick={() => this.handleShowEdit(user)}
+                  >
+                    Edit User
+                  </Button>
+                </td>
+                <td>
+                  <Button
+                    variant="outline-danger"
+                    onClick={() => this.handleShowDelete(user)}
+                  >
+                    Delete User
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+        
+
+        <UserAdd show={this.state.show} onHide={this.handleClose} />
+        <UserEdit
+          show={this.state.showEdit}
+          onHide={this.handleCloseEdit}
+          onSelectItemUserEdit={this.onSelectItemUserEdit}
+          user={this.state.selectUser}
+        />
+        <UserDelete
+          show={this.state.showDelete}
+          onHide={this.handleCloseDelete}
+          onSelectUserDelete={this.onSelectUserDelete}
+          user={this.state.selectUserDelete}
+        />
+      </Container>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    user: state.user,
+    user: state.user.user
   };
 };
 

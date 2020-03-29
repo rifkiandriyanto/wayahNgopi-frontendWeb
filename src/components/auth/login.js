@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
-import logo from './gayain.png';
+import logo from './Icon.png';
 import login from './3255317.png';
 require('dotenv').config();
 
@@ -30,7 +30,7 @@ class Login extends Component {
     // alert('ok')
 
     axios
-      .post("http://localhost:8006/user/login", this.state)
+    .post(`${process.env.REACT_APP_URL}/user/login`, this.state)
       .then(res => {
         console.log(res.data)
         localStorage.setItem('token', res.data.token)
@@ -47,11 +47,12 @@ class Login extends Component {
   render() {
     return (
       <div className='row'>
-        <div className='col-lg-6' style={{ textAlign: 'left' }}>
+        <div className='col-lg-6' style={{ textAlign: 'left', marginTop: 0}}>
           <img
             style={{
-              width: 1000,
-              height: '100vh',
+              marginTop: 0,
+              width: 800,
+              height: 700,
             }}
             src={login}
             alt='login'
@@ -64,15 +65,15 @@ class Login extends Component {
               textAlign: 'center',
               marginTop: '10px',
               boxShadow: '-3px 3px 6px 3px #ff4f5a8c',
-              backgroundColor: '#a5a6a8',
+              backgroundColor: '#fff',
               width: 500,
               marginLeft: '30%',
             }}
           >
             <img
               style={{
-                width: 290,
-                height: 290,
+                width: 250,
+                height: 250,
               }}
               src={logo}
               alt='Logo'
@@ -108,7 +109,18 @@ class Login extends Component {
                   >
                     Login
                   </button>
+                  
+                  <div className='form-group'>
+             
+                  <label>Sign up for WayahNgopi</label>     {"\n"}
+                  <Link to={'/register'}>
+                  Sign Up
+                </Link>
+                  </div>
+                
+                 
                 </div>
+
               </form>
             </div>
           </div>
