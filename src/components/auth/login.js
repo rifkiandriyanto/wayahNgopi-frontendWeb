@@ -1,5 +1,9 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Link, withRouter } from 'react-router-dom';
+import logo from './gayain.png';
+import login from './3255317.png';
+require('dotenv').config();
 
 class Login extends Component {
   constructor(props) {
@@ -42,35 +46,71 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h4 style={{ marginTop: "10px" }}>Login</h4>
-        <div className="row justify-content-md-center">
-          <div className="col-md-8">
-            <form onSubmit={this.onSubmit}>
-              <div className="form-group">
-                <label>Email</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Enter email"
-                  name="email"
-                  onChange={this.onChange}
-                />
-              </div>
-              <div className="form-group">
-                <label>Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="Enter password"
-                  name="password"
-                  onChange={this.onChange}
-                />
-              </div>
-              <button type="submit" className="btn btn-primary">
-                Login
-              </button>
-            </form>
+      <div className='row'>
+        <div className='col-lg-6' style={{ textAlign: 'left' }}>
+          <img
+            style={{
+              width: 1000,
+              height: '100vh',
+            }}
+            src={login}
+            alt='login'
+          />
+        </div>
+
+        <div className='col-lg-6'>
+          <div
+            style={{
+              textAlign: 'center',
+              marginTop: '10px',
+              boxShadow: '-3px 3px 6px 3px #ff4f5a8c',
+              backgroundColor: '#a5a6a8',
+              width: 500,
+              marginLeft: '30%',
+            }}
+          >
+            <img
+              style={{
+                width: 290,
+                height: 290,
+              }}
+              src={logo}
+              alt='Logo'
+            />
+
+            <div className='col-md-8 my-4'>
+              <form>
+                <div className='form-group' style={{ marginRight: '-50%' }}>
+                  <label>Email</label>
+                  <input
+                    type='email'
+                    className='form-control'
+                    placeholder='Enter email'
+                    name='email'
+                    onChange={this.onChange}
+                    required
+                  />
+
+                  <div className='form-group'>
+                    <label>Password</label>
+                    <input
+                      type='password'
+                      className='form-control'
+                      placeholder='Enter password'
+                      name='password'
+                      onChange={this.onChange}
+                    />
+                  </div>
+                  <button
+                    onClick={this.onSubmit}
+                    type='submit'
+                    className='btn login btn-primary'
+                  >
+                    Login
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

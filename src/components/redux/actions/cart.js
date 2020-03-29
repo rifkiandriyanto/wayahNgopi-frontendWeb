@@ -1,4 +1,5 @@
 import axios from "axios";
+import 'dotenv/config'
 
 export const postCart = data => {
   return {
@@ -26,7 +27,7 @@ export const checkout = data => {
     type: "CHECKOUT",
     payload: axios({
       method: "POST",
-      url: "http://localhost:8006/transaction",
+      url: `${process.env.REACT_APP_URL}/transaction`,
       data: data
     })
   };

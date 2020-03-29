@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import NavbarCategory from "../layout/navbarCategory";
+import Navbar from "../layout/navbar";
 import ProductItem from "../product/productItem"
 import { getProducts } from "../redux/actions/product";
 import { Link } from "react-router-dom";
+
 
 class Home extends Component {
   state = {
@@ -90,7 +91,7 @@ class Home extends Component {
     const { products } = this.props;
     return (
       <div className="container">
-        <NavbarCategory />
+        <Navbar />
         <nav className="navbar navbar-expand-lg navbar-light" style={{ background: "##d1e3e3" }}>
         <ul class="navbar-nav">
             <li class="nav-item">

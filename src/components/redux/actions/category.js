@@ -1,11 +1,13 @@
 import axios from "axios";
+import 'dotenv/config'
+
 
 export const getCategory = () => {
   return {
     type: "GET_CATEGORIES",
     payload: axios({
       method: "GET",
-      url: "http://localhost:8006/category"
+      url: `${process.env.REACT_APP_URL}/category`
     })
   };
 };
@@ -15,7 +17,7 @@ export const postCategory = data => {
     type: "POST_CATEGORY",
     payload: axios({
       method: "POST",
-      url: "http://localhost:8006/category",
+      url: `${process.env.REACT_APP_URL}/category`,
       data: data
     })
   };
@@ -26,7 +28,7 @@ export const deleteCategory = categoryId => {
     type: "DELETE_CATEGORY",
     payload: axios({
       method: "DELETE",
-      url: `http://localhost:8006/category/${categoryId}`
+      url: `${process.env.REACT_APP_URL}/category/${categoryId}`
     })
   };
 };
@@ -35,7 +37,7 @@ export const updateCategory = (categoryId, data) => {
     type: "UPDATE_CATEGORY",
     payload: axios({
       method: "PATCH",
-      url: `http://localhost:8006/category/${categoryId}`,
+      url: `${process.env.REACT_APP_URL}/category/${categoryId}`,
       data: data
     })
   };

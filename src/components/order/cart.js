@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import NavbarCategory from "../layout/navbarCategory";
+import Navbar from "../layout/navbar";
 import uniqid from "uniqid";
 import {
   checkout,
@@ -205,7 +205,7 @@ class Cart extends Component {
     };
     return (
       <div>
-        <NavbarCategory />
+        <Navbar />
         <div className="container">
           <div className="row justify-content-md-center mt-4">
             <ViewCart />

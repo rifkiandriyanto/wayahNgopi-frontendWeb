@@ -1,11 +1,12 @@
 import axios from "axios";
+import 'dotenv/config'
 
 export const getHistory = () => {
   return {
     type: "GET_HISTORY",
     payload: axios({
       method: "GET",
-      URL: "http://localhost:8006/transaction"
+      url: `${process.env.REACT_APP_URL}/transaction`
     })
   };
 };
@@ -15,7 +16,7 @@ export const getDetailHistory = id => {
     type: "GET_DETAIL_HISTORY",
     payload: axios({
       method: "GET",
-      url: "http://localhost:8006/transaction" + id
+      url: `${process.env.REACT_APP_URL}/transaction` + id
     })
   };
 };
