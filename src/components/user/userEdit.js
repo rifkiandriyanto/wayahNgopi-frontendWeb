@@ -11,8 +11,6 @@ class UserEdit extends Component {
     username: '',
     password: '',
     alamat: '',
-    provinsi: '',
-    kota: '',
     status: '',
   };
   componentWillReceiveProps({ user }) {

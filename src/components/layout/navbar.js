@@ -45,6 +45,11 @@ class NavbarCategory extends Component {
               </a>
             </li>
             <li className="nav-item">
+              <a className="nav-link" href="/history">
+                History
+              </a>
+            </li>
+            <li className="nav-item">
               <a className="nav-link" href="/user">
                 User
               </a>

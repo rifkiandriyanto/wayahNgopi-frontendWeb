@@ -16,12 +16,13 @@ class User extends Component {
     selectUser: null,
     selectUserDelete: null
   };
+
   componentDidMount() {
     this.getAllUser();
   }
 
-  getAllUser = async () => {
-    await this.props.dispatch(getUser());
+  getAllUser() {
+     this.props.dispatch(getUser());
   };
 
   handleShow = () => {
@@ -97,7 +98,6 @@ class User extends Component {
         <Table responsive>
           <thead>
             <tr>
-              <th>id</th>
               <th>Name</th>
               <th>Email</th>
               <th>Status</th>
@@ -117,8 +117,6 @@ class User extends Component {
                   >
                     Edit User
                   </Button>
-                </td>
-                <td>
                   <Button
                     variant="outline-danger"
                     onClick={() => this.handleShowDelete(user)}

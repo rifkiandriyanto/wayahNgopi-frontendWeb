@@ -5,7 +5,7 @@ export const getUser = () => {
     type: 'GET_USER',
     payload: axios({
       method: 'GET',
-      url: process.env.REACT_APP_URL + '/user',
+      url: `${process.env.REACT_APP_URL}/user`,
     }),
   };
 };
@@ -14,7 +14,7 @@ export const postUser = data => {
     type: 'POST_USER',
     payload: axios({
       method: 'POST',
-      url: process.env.REACT_APP_URL + '/user/register',
+      url: `${process.env.REACT_APP_URL}/user/register`,
       data: data,
     }),
   };
@@ -24,7 +24,7 @@ export const editUser = (userId, data) => {
     type: 'UPDATE_USER',
     payload: axios({
       method: 'PATCH',
-      url: process.env.REACT_APP_URL + `/user/${userId}`,
+      url: `${process.env.REACT_APP_URL}/user/${userId}`,
       data: data,
     }),
   };
@@ -34,7 +34,7 @@ export const deleteUser = UserId => {
     type: 'DELETE_USER',
     payload: axios({
       method: 'DELETE',
-      url: process.env.REACT_APP_URL + `/user/${UserId}`,
+      url: `${process.env.REACT_APP_URL}/user/${UserId}`,
     }),
   };
 };

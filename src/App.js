@@ -10,7 +10,7 @@ import Category from "./components/category/category";
 import Cart from "./components/order/cart";
 import Register from "./components/auth/register";
 import User from "./components/user/user"
-// import History from "./components/history/history"
+import History from "./components/history/history"
 require('dotenv').config()
 
 function App() {

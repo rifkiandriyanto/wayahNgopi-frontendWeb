@@ -11,8 +11,6 @@ class UserAdd extends Component {
     username: '',
     password: '',
     alamat: '',
-    provinsi: '',
-    kota: '',
     status: '',
   };
   onChange = e => {
@@ -85,28 +83,6 @@ class UserAdd extends Component {
                 className='form-control'
                 placeholder='Enter Address'
                 name='alamat'
-                onChange={this.onChange}
-                required
-              />
-            </div>
-            <div className='form-group'>
-            <label>Provinsi</label>
-              <input
-                type='text'
-                className='form-control'
-                placeholder='Enter Province'
-                name='provinsi'
-                onChange={this.onChange}
-                required
-              />
-            </div>
-            <div className='form-group'>
-            <label>Kota</label>
-              <input
-                type='text'
-                className='form-control'
-                placeholder='Enter City'
-                name='kota'
                 onChange={this.onChange}
                 required
               />
