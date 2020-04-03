@@ -2,17 +2,17 @@ import axios from "axios";
 import 'dotenv/config'
 
 export const getProducts = data => {
-  const limit = 6;
+  // const limit = 6;
   const page = data.activePage || 1;
   const category = data.activeCategory || "";
-  const name = data.serachName || "";
+  const name = data.searchName || "";
   const sortBy = data.sort || "id";
-  const sort = data.by || "ASC";
+  // const sort = data.by || "ASC";
   return {
     type: "GET_PRODUCTS",
     payload: axios({
       method: "GET",
-      url: `${process.env.REACT_APP_URL}/product/?limit=${limit}&page=${page}&category=${category}&name=${name}&sortBy=${sortBy}&sort=${sort}`
+      url: `${process.env.REACT_APP_URL}/product/?limit=6&page=${page}&category=${category}&name=${name}&sortBy=${sortBy}&sort=ASC`
     })
   };
 };

@@ -62,7 +62,7 @@ class Cart extends Component {
 
   purchaseHandler = () => {
     const data = {
-      id_transaction: `${uniqid()}`,
+      idTransaction: `${uniqid()}`,
       products: this.props.productsInCart
     };
     this.props.dispatch(checkout(data));

@@ -14,7 +14,7 @@ class NavbarCategory extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light" style={{ background: "##d1e3e3" }}>
-        <span className="navbar-brand">Coffeeshop</span>
+        <span className="navbar-brand">WayahNgopi</span>
         <button
           className="navbar-toggler"
           type="button"
@@ -30,39 +30,48 @@ class NavbarCategory extends Component {
           <ul className="navbar-nav">
             <li className="nav-item active">
               <a className="nav-link" href="/">
-                Home <span className="sr-only">(current)</span>
+              <i class="fas fa-coffee">Home</i>
+                 
               </a>
             </li>
             
             <li className="nav-item">
               <a className="nav-link" href="/product">
-                Product
+              <i class="fas fa-file-invoice"> Product</i>
+               
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/category">
-                Category
+              <i class="fa fa-list-alt">Category</i>
+                
               </a>
             </li>
             <li className="nav-item">
+           
               <a className="nav-link" href="/history">
-                History
+              <i class="fas fa-chart-line">History</i>
               </a>
             </li>
             <li className="nav-item">
+              
               <a className="nav-link" href="/user">
-                User
+              <i className="fas fa-user-cog">User</i>
               </a>
             </li>
             <li className="nav-item">
+             
               <a className="nav-link" href="/login" onClick={this.logout}>
-                Logout
+              <i class="fas fa-sign-out-alt">Logout</i>
+               
               </a>
             </li>
             <li className="nav-item">
+          
+            
             <Link className="nav-link a" to="/cart">
-                  Cart {"   "}
-                  <span className="badge badge-info">{this.props.number}</span>
+            <i className="fas fa-cart-plus">Cart<span className="badge badge-info">{this.props.number}</span></i>
+                  
                 </Link>
             </li>
           </ul>

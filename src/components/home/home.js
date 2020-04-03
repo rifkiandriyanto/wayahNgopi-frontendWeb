@@ -11,7 +11,7 @@ class Home extends Component {
     activePage: 1,
     sort: "id",
     by: "ASC",
-    serachName: "",
+    searchName: "",
     activeCategory: ""
   };
 
@@ -21,11 +21,12 @@ class Home extends Component {
   };
   onClickMenu = e => {
     this.setState({ activeCategory: e.target.id });
+    this.props.history.push(`/?name=${this.state.searchName}&category=${e}sort=${this.state.sort}&by=${this.state.by}`)
     if (e.target.id === "") this.setState({ activeCategory: "" });
     const data = {
       activePage: 1,
       activeCategory: e.target.id,
-      serachName: "",
+      searchName: "",
       sort: this.state.sort,
       by: this.state.by
     };
@@ -37,7 +38,7 @@ class Home extends Component {
     const data = {
       activePage: 1,
       activeCategory: this.state.activeCategory,
-      serachName: "",
+      searchName: "",
       sort: e.target.id,
       by: this.state.by
     };
@@ -49,7 +50,7 @@ class Home extends Component {
     const data = {
       activePage: 1,
       activeCategory: this.state.activeCategory,
-      serachName: "",
+      searchName: "",
       sortBy: this.state.sort,
       sort: e.target.id
     };
@@ -57,11 +58,11 @@ class Home extends Component {
   };
 
   onChangeSearch = e => {
-    this.setState({ serachName: e.target.value });
+    this.setState({ searchName: e.target.value });
     const data = {
       activePage: 1,
       activeCategory: "",
-      serachName: e.target.value,
+      searchName: e.target.value,
       sort: this.state.sort,
       by: this.state.by
     };
@@ -73,7 +74,7 @@ class Home extends Component {
     const data = {
       activePage: e,
       activeCategory: this.state.activeCategory,
-      serachName: this.state.serachName,
+      searchName: this.state.searchName,
       sort: this.state.sort,
       by: this.state.by
     };
