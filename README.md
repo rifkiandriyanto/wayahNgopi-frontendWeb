@@ -41,11 +41,9 @@
 ![History](Images/history.JPG)
 
 ## DEMO
-- <b> DEMO </b>
- <a href="https://wayahngopi.rf.gd/">
+![Demo]("https://wayahngopi.rf.gd/")
 
 ## Table Of Contents
-
 *  [Intro](#Intro)
 *  [Requirments](#Requirments)
 *  [Related Projects](#Related-Projects)
@@ -61,7 +59,9 @@
 ___
 ### Intro
 
-This is a simple point of sales web application made with React.
+WayahNgopi is a point of sale application covering all sales features starting from
+product management, orders, and transaction statistics. This application was created using
+Reacts js and backend using Express and MySQL.
 
 ___
 ### Features
@@ -85,8 +85,8 @@ ___
 ### Related Projects
 This project is related to several platforms
 
-* Backend [https://github.com/rifkiandriyanto/point-of-sale-backend](https://github.com/rifkiandriyanto/point-of-sale-backend)
-* Web App [https://github.com/rifkiandriyanto/point-of-sale-frontend](https://github.com/rifkiandriyanto/point-of-sale-frontend)
+* Backend [https://github.com/rifkiandriyanto/cofeeshop-with-expressJs-npm](https://github.com/rifkiandriyanto/cofeeshop-with-expressJs-npm)
+* Web App [https://github.com/rifkiandriyanto/frontend-pos-react-redux](https://github.com/rifkiandriyanto/frontend-pos-react-redux)
 ___
 
 ### Installation
@@ -95,26 +95,24 @@ ___
 clone the repository
 
 ```sh
-$ git clone https://github.com/rifkiandriyanto/point-of-sale-frontend
+$ git clone https://github.com/rifkiandriyanto/frontend-pos-react-redux
 $ cd point-of-sale-frontend
 ```
 
 ##### Install Depedencies
-Install requirement depedencies
 
 ```sh
 $ npm install
 ```
 
 ##### Update Depedencies
-Update depedencies
 
 ```sh
 $ npm update
 ```
 
 ##### Setup Environment
-Before project development or build for production, you should create new .env file, edit BASE_URL_API variable to backend server. you can found the backend server here.. [https://github.com/rifkiandriyanto/point-of-sale-backend](https://github.com/rifkiandriyanto/point-of-sale-backend)
+Before project development or build for production, you should create new .env file, edit BASE_URL_API variable to backend server. you can found the backend server here.. [https://github.com/rifkiandriyanto/cofeeshop-with-expressJs-npm](https://github.com/rifkiandriyanto/cofeeshop-with-expressJs-npm)
 
 ```sh
 BASE_URL_API=<Backend-api-url>
