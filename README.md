@@ -4,13 +4,13 @@
 </h1>
 
 <p align="center">
-  <a href="https://github.com/facebook/react-native/blob/master/LICENSE">
+  <a href="https://github.com/facebook/react/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="React Native is released under the MIT license." />
   </a>
   <a href="https://circleci.com/gh/facebook/react-native">
     <img src="https://circleci.com/gh/facebook/react-native.svg?style=shield" alt="Current CircleCI build status." />
   </a>
-  <a href="https://www.npmjs.org/package/react-native">
+  <a href="https://www.npmjs.org/package/react>
     <img src="https://badge.fury.io/js/react-native.svg" alt="Current npm package version." />
   </a>
   <a href="https://reactnative.dev/docs/contributing">
@@ -72,11 +72,11 @@ ___
 - [x] Fancy UI Design
 - [x] Simple Add to cart and manipulate quantity in checout
 - [x] Order product
-- [x] Count payment reeipt
+- [x] Count payment receipt
 - [x] Print checkout
 - [x] History of order, weekly, and detail history
 - [x] Authentication with JWT in backend
-- [x] Save Auth session with redux persist --coming soon
+- [x] Persist and rehydrate a redux store
 ___
 ### Requirments
 
@@ -87,8 +87,8 @@ ___
 ### Related Projects
 This project is related to several platforms
 
-* Backend [https://github.com/rifkiandriyanto/cofeeshop-with-expressJs-npm](https://github.com/rifkiandriyanto/cofeeshop-with-expressJs-npm)
-* Mobile App [https://github.com/rifkiandriyanto/WayahNgopi-with-ReactNative](https://github.com/rifkiandriyanto/WayahNgopi-with-ReactNative)
+* Backend [https://github.com/rifkiandriyanto/wayahNgopi-Backend](https://github.com/rifkiandriyanto/wayahNgopi-Backend)
+* Mobile App [https://github.com/rifkiandriyanto/wayahNgopi-frontendMobile](https://github.com/rifkiandriyanto/wayahNgopi-frontendMobile)
 ___
 
 ### Installation
@@ -97,7 +97,7 @@ ___
 clone the repository
 
 ```sh
-$ git clone https://github.com/rifkiandriyanto/frontend-pos-react-redux
+$ git clone https://github.com/rifkiandriyanto/wayahNgopi-frontendWeb
 $ cd point-of-sale-frontend
 ```
 
@@ -114,10 +114,10 @@ $ npm update
 ```
 
 ##### Setup Environment
-Before project development or build for production, you should create new .env file, edit BASE_URL_API variable to backend server. you can found the backend server here.. [https://github.com/rifkiandriyanto/cofeeshop-with-expressJs-npm](https://github.com/rifkiandriyanto/cofeeshop-with-expressJs-npm)
+Before project development or build for production, you should create new .env file, edit REACT_APP_URL variable to backend server. you can found the backend server here.. [https://github.com/rifkiandriyanto/wayahNgopi-Backend](https://github.com/rifkiandriyanto/wayahNgopi-Backend)
 
 ```sh
-BASE_URL_API=<Backend-api-url>
+REACT_APP_URL=<Backend-api-url>
 ```
 
 ##### npm development

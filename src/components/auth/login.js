@@ -26,14 +26,11 @@ class Login extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onsubmit = (e) => {
+  onSubmit = async e => {
     e.preventDefault();
-    const data = {
-      email: this.state.email,
-      password: this.state.password,
-    };
-     this.props.dispatch(login(data));
-     this.props.history.push("/");
+    console.log(this.state);
+    await this.props.dispatch(login(this.state));
+    await this.props.history.push("/");
   };
 
   render() {
