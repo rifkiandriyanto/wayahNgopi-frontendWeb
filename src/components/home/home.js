@@ -4,6 +4,7 @@ import Navbar from "../layout/navbar";
 import ProductItem from "../product/productItem"
 import { getProducts } from "../redux/actions/product";
 import { Link } from "react-router-dom";
+import { logout } from "../redux/actions/auth"
 
 
 class Home extends Component {
@@ -15,10 +16,16 @@ class Home extends Component {
     activeCategory: ""
   };
 
+  onLogout () {
+    this.props.dispatch(logout())
+    this.props.history.push('/login')
+  }
+
   getProducts = () => {
     const data = {};
     this.props.dispatch(getProducts(data));
   };
+
   onClickMenu = e => {
     this.setState({ activeCategory: e.target.id });
     this.props.history.push(`/?name=${this.state.searchName}&category=${e}sort=${this.state.sort}&by=${this.state.by}`)
@@ -82,8 +89,8 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    if (!localStorage.getItem("isAuth")) {
-      this.props.history.push("/login");
+     if (!this.props.auth.isAuthenticated) {
+      this.props.history.push('/login')
     }
     this.getProducts();
   }
@@ -93,7 +100,7 @@ class Home extends Component {
     return (
       <div className="container">
         <Navbar />
-        <nav className="navbar navbar-expand-lg navbar-light" style={{ background: "##d1e3e3" }}>
+        <nav className="navbar navbar-expand-lg navbar-light" style={{ background: "#d1e3e3" }}>
         <ul class="navbar-nav">
             <li class="nav-item">
               <Link class="nav-link" id="" onClick={this.onClickMenu}>
@@ -164,11 +171,12 @@ class Home extends Component {
   }
 }
 
-const mapHome = state => {
+const mapStateToProps = state => {
   return {
+    auth: state.auth,
     products: state.products.products,
     pages: state.products.pages
   };
 };
 
-export default connect(mapHome)(Home);
+export default connect(mapStateToProps)(Home);

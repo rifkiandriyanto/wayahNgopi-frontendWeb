@@ -1,34 +1,34 @@
-import axios from "axios";
+import axios from 'axios';
 import 'dotenv/config'
 
 export const postCart = data => {
   return {
-    type: "POST_CART",
+    type: 'POST_CART',
     payload: { data }
-  };
+  }
 };
 
 export const manipulateItem = data => {
   return {
-    type: "MANIPULATE_ITEM",
+    type: 'MANIPULATE_ITEM',
     payload: { data }
-  };
+  }
 };
 
 export const deleteCart = id => {
   return {
-    type: "DELETE_CART",
+    type: 'DELETE_CART',
     payload: { id }
-  };
+  }
 };
 
 export const checkout = data => {
   return {
-    type: "CHECKOUT",
+    type: 'CHECKOUT',
     payload: axios({
-      method: "POST",
+      method: 'POST',
       url: `${process.env.REACT_APP_URL}/transaction`,
       data: data
     })
-  };
+  }
 };

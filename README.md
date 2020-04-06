@@ -19,13 +19,13 @@
 </p>
 
 ## SCREENSHOOT DEMO
-- <b>LOGIN </b>
+- <b>Login </b>
 ![Login](Images/login.JPG)
 
-- <b> HOME </b>
+- <b> Home </b>
 ![Home](Images/home.JPG)
 
-- <b> PRODUCT </b>
+- <b> Product </b>
 ![Product](Images/product.JPG)
 
 - <b> Cart </b>
@@ -37,11 +37,11 @@
 - <b> User </b>
 ![User](Images/user.JPG)
 
-- <b> HISTORY </b>
+- <b> history </b>
 ![History](Images/history.JPG)
 
 ## DEMO
-![Demo]("https://wayahngopi.rf.gd/")
+![https://wayahngopi.rf.gd/]("https://wayahngopi.rf.gd/")
 
 ## Table Of Contents
 *  [Intro](#Intro)
@@ -66,12 +66,14 @@ Reacts js and backend using Express and MySQL.
 ___
 ### Features
 - [x] Manage Product (CRUD)
-- [x] Manage Product (CRUD)
+- [x] Manage Category (CRUD)
+- [x] Manage User (CRUD)
 - [x] Chart statistics of Revenue
 - [x] Fancy UI Design
 - [x] Simple Add to cart and manipulate quantity in checout
 - [x] Order product
-- [x] Print checkout --coming soon
+- [x] Count payment reeipt
+- [x] Print checkout
 - [x] History of order, weekly, and detail history
 - [x] Authentication with JWT in backend
 - [x] Save Auth session with redux persist --coming soon
@@ -86,7 +88,7 @@ ___
 This project is related to several platforms
 
 * Backend [https://github.com/rifkiandriyanto/cofeeshop-with-expressJs-npm](https://github.com/rifkiandriyanto/cofeeshop-with-expressJs-npm)
-* Web App [https://github.com/rifkiandriyanto/frontend-pos-react-redux](https://github.com/rifkiandriyanto/frontend-pos-react-redux)
+* Mobile App [https://github.com/rifkiandriyanto/WayahNgopi-with-ReactNative](https://github.com/rifkiandriyanto/WayahNgopi-with-ReactNative)
 ___
 
 ### Installation

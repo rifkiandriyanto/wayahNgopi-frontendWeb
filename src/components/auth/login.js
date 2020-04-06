@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { Link, withRouter } from 'react-router-dom';
-import logo from './Icon.png';
-import login from './3255317.png';
-require('dotenv').config();
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import logo from "./Icon.png";
+import loginImage from "./3255317.png";
+import { login } from "../redux/actions/auth";
+require("dotenv").config();
 
 class Login extends Component {
   constructor(props) {
@@ -11,12 +12,12 @@ class Login extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
     };
   }
 
   componentDidMount() {
-    if (localStorage.getItem("token")) {
+    if (this.props.auth.isAuthenticated) {
       this.props.history.push("/");
     }
   }
@@ -25,49 +26,40 @@ class Login extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmit = e => {
+  onsubmit = (e) => {
     e.preventDefault();
-    // alert('ok')
-
-    axios
-    .post(`${process.env.REACT_APP_URL}/user/login`, this.state)
-      .then(res => {
-        console.log(res.data)
-        localStorage.setItem('token', res.data.token)
-        localStorage.setItem('user-id', res.data.id)
-        localStorage.setItem('status', res.data.status)
-        localStorage.setItem('isAuth', true)
-        this.props.history.push('/')
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    const data = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+     this.props.dispatch(login(data));
+     this.props.history.push("/");
   };
 
   render() {
     return (
-      <div className='row'>
-        <div className='col-lg-6' style={{ textAlign: 'left', marginTop: 0}}>
+      <div className="row">
+        <div className="col-lg-6" style={{ textAlign: "left", marginTop: 0 }}>
           <img
             style={{
               marginTop: 0,
               width: 800,
               height: 700,
             }}
-            src={login}
-            alt='login'
+            src={loginImage}
+            alt="loginImage"
           />
         </div>
 
-        <div className='col-lg-6'>
+        <div className="col-lg-6">
           <div
             style={{
-              textAlign: 'center',
-              marginTop: '10px',
-              boxShadow: '-3px 3px 6px 3px #ff4f5a8c',
-              backgroundColor: '#fff',
+              textAlign: "center",
+              marginTop: "10px",
+              boxShadow: "-3px 3px 6px 3px #ff4f5a8c",
+              backgroundColor: "#fff",
               width: 500,
-              marginLeft: '30%',
+              marginLeft: "30%",
             }}
           >
             <img
@@ -76,51 +68,45 @@ class Login extends Component {
                 height: 250,
               }}
               src={logo}
-              alt='Logo'
+              alt="Logo"
             />
 
-            <div className='col-md-8 my-4'>
+            <div className="col-md-8 my-4">
               <form>
-                <div className='form-group' style={{ marginRight: '-50%' }}>
+                <div className="form-group" style={{ marginRight: "-50%" }}>
                   <label>Email</label>
                   <input
-                    type='email'
-                    className='form-control'
-                    placeholder='Enter email'
-                    name='email'
+                    type="email"
+                    className="form-control"
+                    placeholder="Enter email"
+                    name="email"
                     onChange={this.onChange}
                     required
                   />
 
-                  <div className='form-group'>
+                  <div className="form-group">
                     <label>Password</label>
                     <input
-                      type='password'
-                      className='form-control'
-                      placeholder='Enter password'
-                      name='password'
+                      type="password"
+                      className="form-control"
+                      placeholder="Enter password"
+                      name="password"
                       onChange={this.onChange}
                     />
                   </div>
                   <button
                     onClick={this.onSubmit}
-                    type='submit'
-                    className='btn login btn-primary'
+                    type="submit"
+                    className="btn login btn-primary"
                   >
                     Login
                   </button>
-                  
-                  <div className='form-group'>
-             
-                  <label>Sign up for WayahNgopi</label>     {"\n"}
-                  <Link to={'/register'}>
-                  Sign Up
-                </Link>
-                  </div>
-                
-                 
-                </div>
 
+                  <div className="form-group">
+                    <label>Sign up for WayahNgopi</label> {"\n"}
+                    <Link to={"/register"}>Sign Up</Link>
+                  </div>
+                </div>
               </form>
             </div>
           </div>
@@ -130,4 +116,10 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    auth: state.auth
+  };
+};
+
+export default connect(mapStateToProps)(Login);
