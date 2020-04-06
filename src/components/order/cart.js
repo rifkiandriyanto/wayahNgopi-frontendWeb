@@ -66,6 +66,11 @@ class Cart extends Component {
       products: this.props.productsInCart
     };
     this.props.dispatch(checkout(data));
+    var printcontent = document.getElementById("purchase-detail").innerHTML;
+    window.frames["print_frame"].document.body.innerHTML =
+      `<style>*{font-size:8px;} button{display:none}</style>` + printcontent;
+    window.frames["print_frame"].window.focus();
+    window.frames["print_frame"].window.print();
     
   };
   
@@ -204,7 +209,7 @@ class Cart extends Component {
       }
     };
     return (
-      <div>
+      <div className="container">
         <Navbar />
         <div className="container">
           <div className="row justify-content-md-center mt-4">

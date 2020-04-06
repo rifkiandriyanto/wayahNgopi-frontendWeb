@@ -20,28 +20,28 @@
 
 ## SCREENSHOOT DEMO
 - <b>LOGIN </b>
-![Login](Images/78211824-4655af80-74d8-11ea-837b-595ea448ffc1.jpg)
+![Login](Images/login.JPG)
 
 - <b> HOME </b>
-![Home](Images/78211864-608f8d80-74d8-11ea-9336-0a2519708ca8.jpg)
+![Home](Images/home.JPG)
 
 - <b> PRODUCT </b>
-![Product](Images/78211903-7e5cf280-74d8-11ea-9444-c799604adece.jpg)
+![Product](Images/product.JPG)
 
 - <b> Cart </b>
-![Cart](Images/78211928-903e9580-74d8-11ea-8023-84147c5a502f.jpg)
+![Cart](Images/cart.JPG)
 
-- <b> Cart </b>
-![Print](Images/78211928-903e9580-74d8-11ea-8023-84147c5a502f.jpg)
+- <b> Payment </b>
+![Payment](Images/payment.JPG)
 
-- <b> ACCOUNT </b>
-![Account](Images/78211946-a0567500-74d8-11ea-8cc7-d9a6ef1a10e9.jpg)
+- <b> User </b>
+![User](Images/user.JPG)
 
 - <b> HISTORY </b>
-![History](Images/78211961-ab110a00-74d8-11ea-810e-2588002c531d.jpg)
+![History](Images/history.JPG)
 
 ## DEMO
-- <b> HISTORY </b>
+- <b> DEMO </b>
  <a href="https://wayahngopi.rf.gd/">
 
 ## Table Of Contents
@@ -144,11 +144,11 @@ List of depedencies using in this project
 | ------ | ------ |
 | [React](https://facebook.github.io/react-native/) | Web Framework |
 | [Axios](https://github.com/axios/axios) | HTTP client for request API |
-| [Chartjs](https://www.npmjs.com/package/react-native-chart-kit) | Chart Statistic |
+| [Chartjs](https://www.npmjs.com/package/chart.js?activeTab=readme) | Chart Statistic |
 | [Redux](https://redux.js.org) | Global State Management |
 | [Redux Promise Middleware](https://www.npmjs.com/package/redux-promise-middleware) | Promise handler for react redux 
-| [Redux Promise Persist](https://www.npmjs.com/package/redux-promise-middleware) | Redux Persist
-| [Dot Env](https://www.npmjs.com/package/redux-promise-middleware) | Dot Env
+| [Redux Promise Persist](https://www.npmjs.com/package/redux-persist) | Persist and rehydrate a redux store
+| [Dot Env](https://www.npmjs.com/package/dotenv) | Dot Env
 
 License
 ----
