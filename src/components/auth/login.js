@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import logo from "./Icon.png";
 import loginImage from "./3255317.png";
 import { login } from "../redux/actions/auth";
-require("dotenv").config();
 
 class Login extends Component {
   constructor(props) {

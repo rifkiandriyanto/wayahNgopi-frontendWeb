@@ -102,6 +102,11 @@ class Home extends Component {
         <Navbar />
         <nav className="navbar navbar-expand-lg navbar-light" style={{ background: "#d1e3e3" }}>
         <ul class="navbar-nav">
+        <li class="nav-item">
+              <Link class="nav-link" id="" onClick={this.onLogout.bind(this)}>
+              <i class='fas fa-sign-out-alt'>Logout</i>
+              </Link>
+            </li>
             <li class="nav-item">
               <Link class="nav-link" id="" onClick={this.onClickMenu}>
                 All
@@ -146,7 +151,6 @@ class Home extends Component {
             </form>
           </ul>
         </nav>
-
         <div className="row">
           {products.map(product => (
             <ProductItem product={product} key={product.id} />
