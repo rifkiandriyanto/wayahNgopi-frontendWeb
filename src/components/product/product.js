@@ -22,7 +22,7 @@ class Product extends Component {
     sort: "id",
     by: "ASC",
     searchName: "",
-    activeCategory: ""
+    activeCategory: "",
   };
 
   getProducts = () => {
@@ -31,32 +31,35 @@ class Product extends Component {
   };
 
   //Sort Category
-  onClickMenu = e => {
+  onClickMenu = (e) => {
     this.setState({ activeCategory: e.target.id });
-     this.props.history.push(`/product?name=${this.state.searchName}&category=${e}sort=${this.state.sort}&by=${this.state.by}`)
+    this.props.history.push(
+      `/product/?name=${this.state.searchName}&category=${e}sort=${this.state.sort}&by=${this.state.by}`
+    );
     if (e.target.id === "") this.setState({ activeCategory: "" });
-   
+
     const data = {
       activePage: 1,
       activeCategory: e.target.id,
       searchName: "",
       sort: this.state.sort,
-      by: this.state.by
+      by: this.state.by,
     };
     this.props.dispatch(getProducts(data));
   };
 
   //Sort
-  onSort = e => {
+  onSort = (e) => {
     this.setState({ sort: e.target.id });
     this.props.history.push(
-      `/product/?name=${this.state.searchName}&category=${this.state.activeCategory}&sort=${e}`)
+      `/product/?name=${this.state.searchName}&category=${this.state.activeCategory}&sort=${e}`
+    );
     const data = {
       activePage: 1,
       activeCategory: this.state.activeCategory,
       searchName: "",
       sort: e.target.id,
-      by: this.state.by
+      by: this.state.by,
     };
     this.props.dispatch(getProducts(data));
   };
@@ -77,95 +80,96 @@ class Product extends Component {
   // };
 
   //On search
-  onChangeSearch = e => {
+  onChangeSearch = (e) => {
     this.setState({ searchName: e.target.value });
-    this.props.history.push(`/product/?name=${e.target.value}&category=${this.state.activeCategory}&sort=${this.state.sort}&by=${this.state.by}`
+    this.props.history.push(
+      `/product/?name=${e.target.value}&category=${this.state.activeCategory}&sort=${this.state.sort}&by=${this.state.by}`
     );
     const data = {
       activePage: 1,
       activeCategory: "",
       searchName: e.target.value,
       sort: this.state.sort,
-      by: this.state.by
+      by: this.state.by,
     };
     this.props.dispatch(getProducts(data));
   };
 
   //Pagination
-  changePage = e => {
+  changePage = (e) => {
     this.setState({ activePage: e });
     const data = {
       activePage: e,
       activeCategory: this.state.activeCategory,
       searchName: this.state.searchName,
       sort: this.state.sort,
-      by: this.state.by
+      by: this.state.by,
     };
     this.props.dispatch(getProducts(data));
   };
 
   // Delete
-  onSelectProductDelete = product => {
+  onSelectProductDelete = (product) => {
     this.setState({
       selectProductDelete: product,
-      showDelete: true
+      showDelete: true,
     });
   };
 
   handleCloseDelete = () => {
     this.setState({
-      showDelete: false
+      showDelete: false,
     });
   };
 
-  handleShowDelete = product => {
+  handleShowDelete = (product) => {
     console.log(product);
     this.setState({
       showDelete: true,
-      selectProductDelete: product
+      selectProductDelete: product,
     });
   };
 
   // Update
-  onSelectProductUpdate = product => {
+  onSelectProductUpdate = (product) => {
     this.setState({
       selectProductUpdate: product,
-      showUpdate: true
+      showUpdate: true,
     });
   };
 
   handleCloseUpdate = () => {
     this.setState({
-      showUpdate: false
+      showUpdate: false,
     });
   };
 
-  handleShowUpdate = product => {
+  handleShowUpdate = (product) => {
     console.log(product);
     this.setState({
       showUpdate: true,
-      selectProductUpdate: product
+      selectProductUpdate: product,
     });
   };
 
   componentDidMount() {
-    if (localStorage.getItem("status") !== "admin") {
-      alert("You`re not authorized as administrator");
-      this.props.history.push("/");
-    }
+    // if (localStorage.getItem("status") !== "admin") {
+    //   alert("You`re not authorized as administrator");
+    //   this.props.history.push("/");
+    // }
 
     this.getProducts();
   }
 
-  onShow = e => {
+  onShow = (e) => {
     this.setState({
-      show: true
+      show: true,
     });
   };
 
   onHandleClose = () => {
     this.setState({
-      show: false
+      show: false,
     });
   };
 
@@ -289,7 +293,7 @@ class Product extends Component {
 
         <nav aria-label="Page navigation example">
           <ul className="pagination justify-content-center">
-            {this.props.pages.map(page => (
+            {this.props.pages.map((page) => (
               <li
                 className="page-item"
                 key={page}
@@ -306,10 +310,10 @@ class Product extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     products: state.products.products,
-    pages: state.products.pages
+    pages: state.products.pages,
   };
 };
 
