@@ -23,10 +23,8 @@ const notFound = () => {
         <img src={error} alt="notFound" height={550} width={900} />
       </div>
       <div class="col text-center">
-        <Link to = "/">
-        <Button variant="outline-primary">
-            Back To Home
-        </Button>
+        <Link to="/">
+          <Button variant="outline-primary">Back To Home</Button>
         </Link>
       </div>
     </div>

@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Navbar from "../layout/navbar";
-import ProductItem from "../product/productItem"
+import ProductItem from "../product/productItem";
 import { getProducts } from "../redux/actions/product";
 import { Link } from "react-router-dom";
-import { logout } from "../redux/actions/auth"
-
+import { logout } from "../redux/actions/auth";
 
 class Home extends Component {
   state = {
@@ -13,12 +12,12 @@ class Home extends Component {
     sort: "id",
     by: "ASC",
     searchName: "",
-    activeCategory: ""
+    activeCategory: "",
   };
 
-  onLogout () {
-    this.props.dispatch(logout())
-    this.props.history.push('/login')
+  onLogout() {
+    this.props.dispatch(logout());
+    this.props.history.push("/login");
   }
 
   getProducts = () => {
@@ -26,31 +25,34 @@ class Home extends Component {
     this.props.dispatch(getProducts(data));
   };
 
-  onClickMenu = e => {
+  onClickMenu = (e) => {
     this.setState({ activeCategory: e.target.id });
-     this.props.history.push(`/product?name=${this.state.searchName}&category=${e}sort=${this.state.sort}&by=${this.state.by}`)
+    this.props.history.push(
+      `/product?name=${this.state.searchName}&category=${e}sort=${this.state.sort}&by=${this.state.by}`
+    );
     if (e.target.id === "") this.setState({ activeCategory: "" });
-   
+
     const data = {
       activePage: 1,
       activeCategory: e.target.id,
       searchName: "",
       sort: this.state.sort,
-      by: this.state.by
+      by: this.state.by,
     };
     this.props.dispatch(getProducts(data));
   };
 
-  onSort = e => {
+  onSort = (e) => {
     this.setState({ sort: e.target.id });
     this.props.history.push(
-      `/?name=${this.state.searchName}&category=${this.state.activeCategory}&sort=${e}`)
+      `/?name=${this.state.searchName}&category=${this.state.activeCategory}&sort=${e}`
+    );
     const data = {
       activePage: 1,
       activeCategory: this.state.activeCategory,
       searchName: "",
       sort: e.target.id,
-      by: this.state.by
+      by: this.state.by,
     };
     this.props.dispatch(getProducts(data));
   };
@@ -67,35 +69,36 @@ class Home extends Component {
   //   this.props.dispatch(getProducts(data));
   // };
 
-  onChangeSearch = e => {
+  onChangeSearch = (e) => {
     this.setState({ searchName: e.target.value });
-    this.props.history.push(`/?name=${e.target.value}&category=${this.state.activeCategory}&sort=${this.state.sort}&by=${this.state.by}`
+    this.props.history.push(
+      `/?name=${e.target.value}&category=${this.state.activeCategory}&sort=${this.state.sort}&by=${this.state.by}`
     );
     const data = {
       activePage: 1,
       activeCategory: "",
       searchName: e.target.value,
       sort: this.state.sort,
-      by: this.state.by
+      by: this.state.by,
     };
     this.props.dispatch(getProducts(data));
   };
 
-  changePage = e => {
+  changePage = (e) => {
     this.setState({ activePage: e });
     const data = {
       activePage: e,
       activeCategory: this.state.activeCategory,
       searchName: this.state.searchName,
       sort: this.state.sort,
-      by: this.state.by
+      by: this.state.by,
     };
     this.props.dispatch(getProducts(data));
   };
 
   componentDidMount() {
-     if (!this.props.auth.isAuthenticated) {
-      this.props.history.push('/login')
+    if (!this.props.auth.isAuthenticated) {
+      this.props.history.push("/login");
     }
     this.getProducts();
   }
@@ -105,11 +108,14 @@ class Home extends Component {
     return (
       <div className="container">
         <Navbar />
-        <nav className="navbar navbar-expand-lg navbar-light" style={{ background: "#d1e3e3" }}>
-        <ul class="navbar-nav">
-        <li class="nav-item">
+        <nav
+          className="navbar navbar-expand-lg navbar-light"
+          style={{ background: "#d1e3e3" }}
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
               <Link class="nav-link" id="" onClick={this.onLogout.bind(this)}>
-              <i class='fas fa-sign-out-alt'>Logout</i>
+                <i class="fas fa-sign-out-alt">Logout</i>
               </Link>
             </li>
             <li class="nav-item">
@@ -157,13 +163,13 @@ class Home extends Component {
           </ul>
         </nav>
         <div className="row">
-          {products.map(product => (
+          {products.map((product) => (
             <ProductItem product={product} key={product.id} />
           ))}
         </div>
         <nav aria-label="Page navigation example">
           <ul className="pagination justify-content-center">
-            {this.props.pages.map(page => (
+            {this.props.pages.map((page) => (
               <li
                 className="page-item"
                 key={page}
@@ -180,11 +186,11 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     auth: state.auth,
     products: state.products.products,
-    pages: state.products.pages
+    pages: state.products.pages,
   };
 };
 
