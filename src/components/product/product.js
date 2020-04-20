@@ -37,7 +37,6 @@ class Product extends Component {
       `/product/?name=${this.state.searchName}&category=${e}sort=${this.state.sort}&by=${this.state.by}`
     );
     if (e.target.id === "") this.setState({ activeCategory: "" });
-
     const data = {
       activePage: 1,
       activeCategory: e.target.id,
@@ -153,11 +152,6 @@ class Product extends Component {
   };
 
   componentDidMount() {
-    // if (localStorage.getItem("status") !== "admin") {
-    //   alert("You`re not authorized as administrator");
-    //   this.props.history.push("/");
-    // }
-
     this.getProducts();
   }
 
@@ -256,7 +250,7 @@ class Product extends Component {
                 <td>{product.price}</td>
                 <td>{product.stock}</td>
                 <td>
-                  <td>
+                
                     <Button
                       variant="outline-warning"
                       onClick={() => this.handleShowUpdate(product)}
@@ -270,7 +264,7 @@ class Product extends Component {
                     >
                       Delete
                     </Button>
-                  </td>
+                 
                 </td>
               </tr>
             ))}
