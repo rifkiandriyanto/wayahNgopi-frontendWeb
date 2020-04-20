@@ -33,7 +33,7 @@ class Product extends Component {
   //Sort Category
   onClickMenu = e => {
     this.setState({ activeCategory: e.target.id });
-     this.props.history.push(`/product?name=${this.state.searchName}&category=${e}sort=${this.state.sort}&by=${this.state.by}`)
+     this.props.history.push(`/product/?name=${this.state.searchName}&category=${e}sort=${this.state.sort}&by=${this.state.by}`)
     if (e.target.id === "") this.setState({ activeCategory: "" });
    
     const data = {
@@ -149,10 +149,10 @@ class Product extends Component {
   };
 
   componentDidMount() {
-    if (localStorage.getItem("status") !== "admin") {
-      alert("You`re not authorized as administrator");
-      this.props.history.push("/");
-    }
+    // if (localStorage.getItem("status") !== "admin") {
+    //   alert("You`re not authorized as administrator");
+    //   this.props.history.push("/");
+    // }
 
     this.getProducts();
   }

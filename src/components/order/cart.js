@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Navbar from "../layout/navbar";
 import uniqid from "uniqid";
+import empty from '../assets/empty.png'
 import {
   checkout,
   manipulateItem,
@@ -121,7 +122,7 @@ class Cart extends Component {
       if (this.props.productsInCart.length < 1) {
         return (
           <div className="col-6 mt-2">
-            <h3 className="mt-3">Your Cart is Empety</h3>
+          <img src={empty} alt="empty" />
           </div>
         );
       } else {

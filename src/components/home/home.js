@@ -28,8 +28,9 @@ class Home extends Component {
 
   onClickMenu = e => {
     this.setState({ activeCategory: e.target.id });
-    this.props.history.push(`/?name=${this.state.searchName}&category=${e}sort=${this.state.sort}&by=${this.state.by}`)
+     this.props.history.push(`/product?name=${this.state.searchName}&category=${e}sort=${this.state.sort}&by=${this.state.by}`)
     if (e.target.id === "") this.setState({ activeCategory: "" });
+   
     const data = {
       activePage: 1,
       activeCategory: e.target.id,
@@ -42,6 +43,8 @@ class Home extends Component {
 
   onSort = e => {
     this.setState({ sort: e.target.id });
+    this.props.history.push(
+      `/?name=${this.state.searchName}&category=${this.state.activeCategory}&sort=${e}`)
     const data = {
       activePage: 1,
       activeCategory: this.state.activeCategory,
@@ -52,20 +55,22 @@ class Home extends Component {
     this.props.dispatch(getProducts(data));
   };
 
-  onBy = e => {
-    this.setState({ by: e.target.id });
-    const data = {
-      activePage: 1,
-      activeCategory: this.state.activeCategory,
-      searchName: "",
-      sortBy: this.state.sort,
-      sort: e.target.id
-    };
-    this.props.dispatch(getProducts(data));
-  };
+  // onBy = e => {
+  //   this.setState({ by: e.target.id });
+  //   const data = {
+  //     activePage: 1,
+  //     activeCategory: this.state.activeCategory,
+  //     searchName: "",
+  //     sortBy: this.state.sort,
+  //     sort: e.target.id
+  //   };
+  //   this.props.dispatch(getProducts(data));
+  // };
 
   onChangeSearch = e => {
     this.setState({ searchName: e.target.value });
+    this.props.history.push(`/?name=${e.target.value}&category=${this.state.activeCategory}&sort=${this.state.sort}&by=${this.state.by}`
+    );
     const data = {
       activePage: 1,
       activeCategory: "",

@@ -26,8 +26,12 @@ class productItem extends Component {
     }
   };
   render() {
-    const ViewCard = () => {
-      if (this.props.product.stock > 0) {
+    const PriceParsed = (data)=>{
+      return(
+      <span>{data.data.toString().split('').reverse().join('').match(/\d{1,3}/g).join('.').split('').reverse().join('')}</span>
+      )
+    }
+     
         return (
           <div className="col-md-6 col-lg-4">
             <div
@@ -66,17 +70,16 @@ class productItem extends Component {
             </div>
           </div>
         );
-        return <div></div>;
-      }
+       
+      
     };
-    return <ViewCard />;
-  }
+   
 }
 
-const mapCart = state => {
+const mapStateToProps = state => {
   return {
-    productsInCart: state.cart.cart
+    productsInCart: state.cart.cart,
   };
 };
 
-export default connect(mapCart)(productItem);
+export default connect(mapStateToProps)(productItem);
