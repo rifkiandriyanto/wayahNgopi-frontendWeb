@@ -12,7 +12,7 @@ export const getProducts = data => {
     type: "GET_PRODUCTS",
     payload: axios({
       method: "GET",
-      url: `${process.env.REACT_APP_URL}/product/?limit=${limit}&page=${page}&category=${category}&name=${name}&sortBy=${sortBy}&sort=ASC`
+      url: `${process.env.REACT_APP_URL}/product?limit=${limit}&page=${page}&category=${category}&name=${name}&sortBy=${sortBy}&sort=ASC`
     })
   };
 };
